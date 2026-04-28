@@ -14,262 +14,730 @@
 body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#f0f4f8;direction:rtl}
 button{font-family:inherit;cursor:pointer;border:none;outline:none;transition:opacity 0.15s}
 button:active{opacity:0.75}
-input,select{font-family:inherit;outline:none}
+input,select,textarea{font-family:inherit;outline:none}
 .screen{display:none;min-height:100vh}
 .screen.active{display:block}
+
+/* HOME */
 #home{background:linear-gradient(160deg,#0d1b2a,#1b2838 55%,#1e3a5f);padding:20px;padding-top:calc(20px + env(safe-area-inset-top));padding-bottom:calc(20px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center}
-.hi{max-width:490px;width:100%}
-.hl{text-align:center;margin-bottom:22px}
-.hl .e{font-size:50px;display:block;margin-bottom:5px}
-.hl h1{color:#fff;font-size:23px;font-weight:900}
-.hl p{color:#90caf9;font-size:13px;margin-top:5px}
-.hc{background:rgba(255,255,255,0.07);border-radius:20px;padding:20px;border:1px solid rgba(255,255,255,0.12);margin-bottom:13px}
-.lb{color:#90caf9;font-size:12px;font-weight:600;display:block;margin-bottom:4px}
-.fi{width:100%;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;padding:10px 13px;font-size:15px;margin-bottom:13px}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.fb{padding:12px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);color:#999;font-weight:400;font-size:12px;width:100%;transition:all 0.2s}
-.fb.on{border-width:2px;color:#fff;font-weight:700}
-.bs{width:100%;padding:15px;border-radius:14px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;font-size:17px;font-weight:800;margin-bottom:10px;box-shadow:0 4px 16px rgba(231,76,60,0.38)}
-.br{width:100%;padding:13px;border-radius:14px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#90caf9;font-size:14px;font-weight:600}
+.hi{max-width:500px;width:100%}
+.hl{text-align:center;margin-bottom:20px}
+.hl .em{font-size:48px;display:block;margin-bottom:4px}
+.hl h1{color:#fff;font-size:22px;font-weight:900}
+.hl p{color:#90caf9;font-size:13px;margin-top:4px}
+.hcard{background:rgba(255,255,255,0.07);border-radius:20px;padding:18px;border:1px solid rgba(255,255,255,0.12);margin-bottom:12px}
+.hlb{color:#90caf9;font-size:12px;font-weight:600;display:block;margin-bottom:4px}
+.hfi{width:100%;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;padding:10px 13px;font-size:15px;margin-bottom:12px}
+.hfi:last-child{margin-bottom:0}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.fgbtn{padding:11px 6px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);color:#999;font-weight:400;font-size:11px;width:100%;transition:all 0.2s;line-height:1.3}
+.fgbtn.on{border-width:2px;color:#fff;font-weight:700}
+.hstart{width:100%;padding:14px;border-radius:14px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;font-size:16px;font-weight:800;margin-bottom:9px;box-shadow:0 4px 16px rgba(231,76,60,0.38)}
+.hrep{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#90caf9;font-size:14px;font-weight:600}
+
+/* FORM SCREEN */
 #fs{background:#f0f4f8}
-.tb{background:#fff;border-bottom:2px solid #e8ecf0;padding:10px 13px;padding-top:calc(10px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:8px;flex-wrap:wrap}
-.tbk{border:1px solid #dce1e8;background:#f8f9fa;border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;color:#2c3e50}
-.tbc{display:flex;align-items:center;gap:7px;flex:1;justify-content:center}
-.tbn{font-weight:800;font-size:14px;color:#2c3e50}
-.sp{border-radius:14px;padding:3px 10px;font-weight:700;font-size:13px;color:#fff}
-.tbb{display:flex;gap:7px}
-.bpdf{border:1px solid #2980b9;background:#fff;color:#2980b9;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:600}
-.bsv{border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;border-radius:8px;padding:7px 13px;font-size:13px;font-weight:700;min-width:66px}
-.bsv.ok{background:#27ae60}
-.fb2{max-width:680px;margin:0 auto;padding:14px 13px 30px}
-.fhd{border-radius:16px;padding:16px;margin-bottom:16px}
-.fht{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px}
-.pr{display:flex;justify-content:space-between;font-size:11px;color:#7f8c8d;margin:10px 0 5px}
-.pb{height:7px;background:#e8ecf0;border-radius:99px;overflow:hidden}
-.pf{height:100%;border-radius:99px;transition:width 0.4s}
-.fb3{background:#fdedec;border-radius:10px;padding:11px 13px;margin-top:12px}
-.sec{margin-bottom:13px}
-.sh{display:flex;align-items:center;justify-content:space-between;background:#eef2f7;border-radius:10px;padding:10px 13px;cursor:pointer;user-select:none;margin-bottom:10px}
-.sh.col{margin-bottom:0}
-.sl{display:flex;align-items:center;gap:6px}
-.sr{display:flex;align-items:center;gap:7px}
-.q{border-radius:12px;padding:11px 13px;margin-bottom:7px;border:1px solid #e4e8ed;background:#fff;transition:background 0.2s,border-color 0.2s}
-.qt{font-weight:500;font-size:14px;color:#2c3e50;direction:rtl;margin-bottom:9px;line-height:1.5}
-.qb{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
-.qbt{padding:6px 10px;border-radius:8px;border:1px solid #ddd;background:#fafafa;color:#888;font-weight:400;font-size:12px;white-space:nowrap;font-family:inherit}
-.qbt.on{font-weight:700;border-width:2px}
-.qr{display:flex;gap:8px;align-items:center}
-.qn{flex:1;border:1px solid #dce1e8;border-radius:8px;padding:7px 10px;font-size:13px;direction:rtl;background:rgba(255,255,255,0.8);color:#2c3e50}
-.qcb{flex-shrink:0;width:40px;height:40px;border-radius:8px;border:1px solid #dce1e8;background:#fafbfc;font-size:18px;position:relative;display:flex;align-items:center;justify-content:center}
-.qcb.hp{border:2px solid #2980b9;background:#ebf5fb}
-.cc{position:absolute;top:-5px;right:-5px;background:#27ae60;color:#fff;border-radius:50%;width:15px;height:15px;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:900}
-.qt2{margin-top:8px;cursor:zoom-in}
-.qt2 img{height:68px;border-radius:8px;object-fit:cover;border:2px solid #2980b9}
-.ff{display:flex;gap:10px;margin-top:14px;padding-bottom:env(safe-area-inset-bottom)}
-.bpdf2{flex:1;padding:14px;border-radius:14px;border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;font-size:14px;font-weight:700}
-.bfin{flex:2;padding:14px;border-radius:14px;border:none;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-size:15px;font-weight:800}
-.mb{position:fixed;inset:0;background:#000a;z-index:2000;display:flex;align-items:flex-end;justify-content:center}
-.mbx{background:#fff;border-radius:20px 20px 0 0;padding:22px;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;padding-bottom:calc(22px + env(safe-area-inset-bottom))}
-.mh{width:40px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 16px}
-.cmb{position:fixed;inset:0;background:#000d;z-index:3000;display:flex;align-items:center;justify-content:center;padding:16px}
-.cmbx{background:#1a1a2e;border-radius:22px;padding:20px;width:100%;max-width:420px;border:1px solid rgba(255,255,255,0.13);max-height:92vh;overflow-y:auto}
-.cpv{border-radius:14px;overflow:hidden;background:#111;min-height:180px;display:flex;align-items:center;justify-content:center}
-.cpv video{width:100%;max-height:260px;display:block;background:#000}
-.cpv img{width:100%;max-height:260px;object-fit:cover;cursor:zoom-in}
-.cpp{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px;text-align:center}
-.ca{display:flex;flex-direction:column;gap:9px;margin-top:14px}
-.lbx{position:fixed;inset:0;background:#000e;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px}
-.lbx img{max-width:100%;max-height:90vh;border-radius:12px;object-fit:contain}
-.lbc{position:fixed;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:#fff;border-radius:50%;width:44px;height:44px;font-size:20px}
-.ri{border:1px solid #e4e8ed;border-radius:12px;margin-bottom:10px;overflow:hidden}
-.rh{padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.rb{padding:13px;background:#fff}
-.ibanner{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1a1a2e,#0d1b2a);border-top:2px solid rgba(144,202,249,0.3);padding:16px 18px;z-index:5000;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.tb{background:#fff;border-bottom:2px solid #e8ecf0;padding:9px 12px;padding-top:calc(9px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:7px;flex-wrap:wrap}
+.tbback{border:1px solid #dce1e8;background:#f8f9fa;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:600;color:#2c3e50}
+.tbcenter{display:flex;align-items:center;gap:6px;flex:1;justify-content:center}
+.tbname{font-weight:800;font-size:13px;color:#2c3e50;text-align:center}
+.tbscore{border-radius:14px;padding:3px 9px;font-weight:700;font-size:12px;color:#fff}
+.tbbtns{display:flex;gap:6px}
+.btnpdf{border:1px solid #2980b9;background:#fff;color:#2980b9;border-radius:8px;padding:6px 9px;font-size:11px;font-weight:600}
+.btnmail{border:1px solid #8e44ad;background:#fff;color:#8e44ad;border-radius:8px;padding:6px 9px;font-size:11px;font-weight:600}
+.btnsave{border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:700;min-width:60px}
+.btnsave.ok{background:#27ae60}
+.fbody{max-width:680px;margin:0 auto;padding:13px 12px 30px}
+
+/* FORM HEADER */
+.fhead{border-radius:16px;padding:14px;margin-bottom:14px}
+.fhtop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px}
+.fhlabel{font-size:17px;font-weight:800}
+.fhsub{color:#7f8c8d;font-size:12px;margin-top:2px}
+.fhscore{text-align:center}
+.fhpct{font-size:32px;font-weight:900;line-height:1}
+.fhpass{font-size:11px;color:#7f8c8d;margin-top:2px}
+.prow{display:flex;justify-content:space-between;font-size:11px;color:#7f8c8d;margin:9px 0 4px}
+.pbar{height:6px;background:#e8ecf0;border-radius:99px;overflow:hidden}
+.pfill{height:100%;border-radius:99px;transition:width 0.4s}
+.failbox{background:#fdedec;border-radius:10px;padding:10px 12px;margin-top:10px}
+.failtitle{font-weight:700;color:#e74c3c;margin-bottom:6px;font-size:12px}
+.failitem{font-size:11px;color:#2c3e50;margin-bottom:2px;direction:rtl;line-height:1.5}
+
+/* SECTIONS */
+.sec{margin-bottom:12px}
+.shead{display:flex;align-items:center;justify-content:space-between;background:#eef2f7;border-radius:10px;padding:9px 12px;cursor:pointer;user-select:none;margin-bottom:9px}
+.shead.col{margin-bottom:0}
+.sleft{display:flex;align-items:center;gap:5px}
+.sright{display:flex;align-items:center;gap:6px}
+.stitle{font-weight:700;font-size:13px;color:#2c3e50}
+.sscore{border-radius:13px;padding:2px 8px;font-weight:700;font-size:11px;color:#fff}
+
+/* QUESTION */
+.q{border-radius:11px;padding:10px 12px;margin-bottom:6px;border:1px solid #e4e8ed;background:#fff;transition:background 0.2s,border-color 0.2s}
+.qtext{font-weight:500;font-size:13px;color:#2c3e50;direction:rtl;margin-bottom:8px;line-height:1.5}
+.qbtns{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:7px}
+.qbtn{padding:5px 9px;border-radius:7px;border:1px solid #ddd;background:#fafafa;color:#888;font-weight:400;font-size:11px;white-space:nowrap;font-family:inherit}
+.qbtn.on{font-weight:700;border-width:2px}
+.qrow{display:flex;gap:7px;align-items:center}
+.qnote{flex:1;border:1px solid #dce1e8;border-radius:7px;padding:6px 9px;font-size:12px;direction:rtl;background:rgba(255,255,255,0.8);color:#2c3e50}
+.qcambtn{flex-shrink:0;width:36px;height:36px;border-radius:7px;border:1px solid #dce1e8;background:#fafbfc;font-size:16px;position:relative;display:flex;align-items:center;justify-content:center}
+.qcambtn.hp{border:2px solid #2980b9;background:#ebf5fb}
+.camcheck{position:absolute;top:-4px;right:-4px;background:#27ae60;color:#fff;border-radius:50%;width:13px;height:13px;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:900}
+.qthumb{margin-top:7px;cursor:zoom-in}
+.qthumb img{height:60px;border-radius:7px;object-fit:cover;border:2px solid #2980b9}
+
+/* SECTION NOTE (for raw-style sections) */
+.secnote{border:1px solid #dce1e8;border-radius:8px;padding:8px 11px;font-size:13px;direction:rtl;background:rgba(255,255,255,0.8);color:#2c3e50;width:100%;margin-bottom:7px}
+
+/* FOOTER */
+.ffoot{display:flex;gap:9px;margin-top:12px;padding-bottom:env(safe-area-inset-bottom)}
+.btnpdf2{flex:1;padding:13px;border-radius:13px;border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;font-size:13px;font-weight:700}
+.btnmail2{flex:1;padding:13px;border-radius:13px;border:none;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-size:13px;font-weight:700}
+.btnfinish{flex:2;padding:13px;border-radius:13px;border:none;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-size:14px;font-weight:800}
+
+/* MODALS */
+.mbg{position:fixed;inset:0;background:#000a;z-index:2000;display:flex;align-items:flex-end;justify-content:center}
+.mbox{background:#fff;border-radius:20px 20px 0 0;padding:20px;width:100%;max-width:640px;max-height:88vh;overflow-y:auto;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+.mhandle{width:36px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 14px}
+.cambg{position:fixed;inset:0;background:#000d;z-index:3000;display:flex;align-items:center;justify-content:center;padding:14px}
+.cambox{background:#1a1a2e;border-radius:20px;padding:18px;width:100%;max-width:420px;border:1px solid rgba(255,255,255,0.13);max-height:92vh;overflow-y:auto}
+.campv{border-radius:13px;overflow:hidden;background:#111;min-height:160px;display:flex;align-items:center;justify-content:center}
+.campv video{width:100%;max-height:240px;display:block;background:#000}
+.campv img{width:100%;max-height:240px;object-fit:cover;cursor:zoom-in}
+.campph{display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px;text-align:center}
+.camacts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.lbg{position:fixed;inset:0;background:#000e;z-index:9999;display:flex;align-items:center;justify-content:center;padding:14px}
+.lbg img{max-width:100%;max-height:90vh;border-radius:11px;object-fit:contain}
+.lbclose{position:fixed;top:14px;right:14px;background:rgba(255,255,255,0.2);border:none;color:#fff;border-radius:50%;width:42px;height:42px;font-size:19px}
+
+/* REPORTS */
+.ritem{border:1px solid #e4e8ed;border-radius:11px;margin-bottom:9px;overflow:hidden}
+.rhead{padding:11px 13px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:7px}
+.rbody{padding:12px;background:#fff}
+
+/* INSTALL BANNER */
+.ibanner{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1a1a2e,#0d1b2a);border-top:2px solid rgba(144,202,249,0.3);padding:14px 16px;z-index:5000;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
 </style>
 </head>
 <body>
+
 <div id="home" class="screen active">
   <div class="hi">
-    <div class="hl"><span class="e">🍽️</span><h1>מערכת בקרת איכות</h1><p>ניר עציון — ביקורת מטבחים</p></div>
-    <div class="hc">
-      <label class="lb">שם המבקר</label>
-      <input id="ii" class="fi" placeholder="הזן שם מלא..." style="direction:rtl">
-      <label class="lb">מטבח / תחנה</label>
-      <select id="ik" class="fi"></select>
-      <label class="lb">תאריך ביקורת</label>
-      <input id="id" type="date" class="fi" style="margin-bottom:17px">
-      <label class="lb" style="margin-bottom:9px">סוג ביקורת</label>
-      <div class="fg" id="fg"></div>
+    <div class="hl"><span class="em">🍽️</span><h1>מערכת בקרת איכות</h1><p>ניר עציון — ביקורת מטבחים</p></div>
+    <div class="hcard">
+      <label class="hlb">שם המבקר</label>
+      <input id="ii" class="hfi" placeholder="הזן שם מלא..." style="direction:rtl">
+      <label class="hlb">מייל לשליחת הדוח</label>
+      <input id="imail" class="hfi" type="email" placeholder="your@email.com" style="direction:ltr;text-align:left">
+      <label class="hlb">מטבח / תחנה</label>
+      <select id="ik" class="hfi"></select>
+      <label class="hlb">תאריך ביקורת</label>
+      <input id="idate" type="date" class="hfi" style="margin-bottom:14px">
+      <label class="hlb" style="margin-bottom:8px">סוג ביקורת</label>
+      <div class="fgrid" id="fg"></div>
     </div>
-    <button class="bs" onclick="startInspection()">🚀 התחל ביקורת</button>
-    <button class="br" onclick="openReports()">📊 ביקורות שמורות (<span id="rc">0</span>)</button>
+    <button class="hstart" onclick="startInspection()">🚀 התחל ביקורת</button>
+    <button class="hrep" onclick="openReports()">📊 ביקורות שמורות (<span id="rc">0</span>)</button>
   </div>
 </div>
+
 <div id="fs" class="screen">
   <div class="tb">
-    <button class="tbk" onclick="goHome()">← חזרה</button>
-    <div class="tbc"><span class="tbn" id="tbn"></span><span class="sp" id="tbs">0%</span></div>
-    <div class="tbb">
-      <button class="bpdf" onclick="doPDF()">📄 PDF</button>
-      <button class="bsv" id="bsv" onclick="doSave()">💾 שמור</button>
+    <button class="tbback" onclick="goHome()">← חזרה</button>
+    <div class="tbcenter">
+      <span class="tbname" id="tbn"></span>
+      <span class="tbscore" id="tbs">0%</span>
+    </div>
+    <div class="tbbtns">
+      <button class="btnpdf" onclick="doPDF()">📄</button>
+      <button class="btnmail" onclick="doMail()">📧</button>
+      <button class="btnsave" id="bsv" onclick="doSave()">💾 שמור</button>
     </div>
   </div>
-  <div class="fb2">
-    <div id="fhd"></div>
+  <div class="fbody">
+    <div id="fhead"></div>
     <div id="fsecs"></div>
-    <div class="ff">
-      <button class="bpdf2" onclick="doPDF()">📄 ייצא דוח PDF</button>
-      <button class="bfin" onclick="doFinish()">✅ סיים ושמור</button>
+    <div class="ffoot">
+      <button class="btnpdf2" onclick="doPDF()">📄 PDF</button>
+      <button class="btnmail2" onclick="doMail()">📧 שלח מייל</button>
+      <button class="btnfinish" onclick="doFinish()">✅ סיים ושמור</button>
     </div>
   </div>
 </div>
-<div id="rm" class="mb" style="display:none" onclick="closeReports()">
-  <div class="mbx" onclick="event.stopPropagation()">
-    <div class="mh"></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <span style="font-size:18px;font-weight:800;color:#2c3e50">📊 ביקורות שמורות</span>
-      <button style="background:none;border:none;font-size:22px;color:#aaa" onclick="closeReports()">✕</button>
+
+<div id="rm" class="mbg" style="display:none" onclick="closeReports()">
+  <div class="mbox" onclick="event.stopPropagation()">
+    <div class="mhandle"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <span style="font-size:17px;font-weight:800;color:#2c3e50">📊 ביקורות שמורות</span>
+      <button style="background:none;border:none;font-size:20px;color:#aaa" onclick="closeReports()">✕</button>
     </div>
     <div id="rl"></div>
   </div>
 </div>
-<div id="cm" class="cmb" style="display:none" onclick="closeCam()">
-  <div class="cmbx" onclick="event.stopPropagation()">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <span style="color:#fff;font-weight:800;font-size:16px">📷 צרף תמונה</span>
-      <button style="background:none;border:none;color:#aaa;font-size:24px;line-height:1" onclick="closeCam()">✕</button>
+
+<div id="cm" class="cambg" style="display:none" onclick="closeCam()">
+  <div class="cambox" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <span style="color:#fff;font-weight:800;font-size:15px">📷 צרף תמונה</span>
+      <button style="background:none;border:none;color:#aaa;font-size:22px;line-height:1" onclick="closeCam()">✕</button>
     </div>
-    <div id="cerr" style="display:none;background:#fdedec;border:1px solid rgba(231,76,60,0.3);border-radius:10px;padding:10px 13px;margin-bottom:12px;direction:rtl">
-      <div style="font-weight:700;color:#c0392b;font-size:13px" id="cerrt"></div>
-      <div style="font-size:12px;color:#7f8c8d;margin-top:3px" id="cerrh"></div>
+    <div id="cerr" style="display:none;background:#fdedec;border:1px solid rgba(231,76,60,0.3);border-radius:9px;padding:9px 12px;margin-bottom:11px;direction:rtl">
+      <div style="font-weight:700;color:#c0392b;font-size:12px" id="cerrt"></div>
+      <div style="font-size:11px;color:#7f8c8d;margin-top:2px" id="cerrh"></div>
     </div>
-    <div class="cpv" id="cpv"><div class="cpp"><span style="font-size:48px">📷</span><span style="color:#90caf9;font-size:13px">לחץ לצילום או בחר מהגלריה</span></div></div>
+    <div class="campv" id="cpv"><div class="campph"><span style="font-size:44px">📷</span><span style="color:#90caf9;font-size:12px">לחץ לצילום או בחר מהגלריה</span></div></div>
     <canvas id="cc" style="display:none"></canvas>
     <input id="cfc" type="file" accept="image/*" capture="environment" style="display:none">
     <input id="cfg" type="file" accept="image/*" style="display:none">
-    <div class="ca" id="ca"></div>
+    <div class="camacts" id="ca"></div>
   </div>
 </div>
-<div id="lb" class="lbx" style="display:none" onclick="closeLB()">
-  <img id="lbi" src=""><button class="lbc" onclick="closeLB()">✕</button>
+
+<div id="lb" class="lbg" style="display:none" onclick="closeLB()">
+  <img id="lbi" src=""><button class="lbclose" onclick="closeLB()">✕</button>
 </div>
+
 <script>
+// ═══════════════════════════════════════════════════════════════════
+// KITCHENS & FORMS DATA
+// ═══════════════════════════════════════════════════════════════════
 const KITCHENS=["Bento","Nine Dine","Nona","מרלוג","בתי קפה - איילנס"];
-// Kitchen display names mapping
-const KITCHEN_NAMES={"מרלוג":'מרלו"ג'};
-function kitchenDisplay(k){return KITCHEN_NAMES[k]||k;}
+const KD={"מרלוג":'מרלו"ג'};
+function kname(k){return KD[k]||k;}
 
-// Expiry sections per kitchen
-const EXPIRY_SECTIONS={
-  "Bento":[
-    {title:'מקרר 9 — ירקות גולמי',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 5 — מוגמר מטבח חם',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 2 — בע"ד בתהליך',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 1 — סלטייה מוגמר',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 6 — הפשרות בעלי כנף (קצבייה)',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 7 — הפשרות בקר (קצבייה)',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 3 — חלבי',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 4',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מחסן',questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה?","מוצרי ניקוי נעולים בארון נפרד?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים מעוקרים ובתוקף?","האם נצפו מוצרים באריזה פגומה?","האם נמצא מוצר עם תוקף קצר?"]},
-  ],
-  "Nine Dine":[
-    {title:'מקרר 4 — מטבח חם מוגמר, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 3 — קצבייה בתהליך, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 8 — הפשרת בעלי כנף, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 5 — הפשרת בקר, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 2 — הפשרת דגים, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 7 — חלבי מוגמר, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 1 — סלטייה מוגמר, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 6 — קונדיטוריה מוגמר, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 10 — מטבח חם, קומה 0',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מחסן',questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה?","מוצרי ניקוי נעולים בארון נפרד?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים מעוקרים ובתוקף?","האם נצפו מוצרים באריזה פגומה?","האם נמצא מוצר עם תוקף קצר?"]},
-  ],
-  "Nona":[
-    {title:'מקרר 1 — ירקות גולמי',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 3 — מוגמר',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 4 — מוגמר',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 5 — בע"ד בתהליך',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 6 — מעדנים',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 7 — חלבי',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 8 — ד"מ',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 9 — מוגמר',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 1',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מחסן',questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה?","מוצרי ניקוי נעולים בארון נפרד?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים מעוקרים ובתוקף?","האם נצפו מוצרים באריזה פגומה?","האם נמצא מוצר עם תוקף קצר?"]},
-  ],
-  "מרלוג":[
-    {title:'מקרר 15 — ירקות לאחר חיטוי, קומה -2',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקרר 16 — ירקות גולמי, קומה -2',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 11 — בעלי כנף, קומה -2',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 12 — קפואים, קומה -2',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 13 — בקר, קומה -2',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מקפיא 14 — דגים, קומה -2',questions:["מילוי טפסי בקרת טמפ' 2 פעמים ביום כנדרש?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-    {title:'מחסן ראשי',questions:["האם המחסן נקי ומסודר?","האם המדפים נקיים?","האם הקירות נקיים?","האם האחסון מתבצע בהגבהה?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
-  ],
-  "בתי קפה - איילנס":[
-    {title:'מחסן ואזורי אחסון',questions:["האם נצפו מוצרים פגי תוקף?","האם כל המזון מצופה/עטוף?","האם כל המזון עם תאריך ייצור/פתיחה/תוקף?","האם האחסון בהגבהה?","האם קיימת מדבקה ייעודית למוצרים שיצאו מהקפאה?"]},
-    {title:'אזור ההגשה + עמדת הגשה',questions:["האם המוצרים המוגמרים שבמקרר בתוקף?","האם קיימת מדבקה ייעודית למוצרים שיצאו מהקפאה?","האם המוצרים שמוגשים בהכנת המטבח עם תאריך ייצור?"]},
-    {title:'מקררים',questions:["האם נצפו מוצרים פגי תוקף?","האם נצפו מוצרים באריזה פגומה או פתוחה?"]},
-    {title:'חדר כריכים',questions:["האם נשמרו דוגמאות מזון?","האם כל המזון מכוסה / עטוף?","האם נצפו מזון ללא מדבקת תאריך פתיחה?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים מעוקרים ובתוקף?","האם נצפו מוצרים באריזה פגומה?"]},
-  ],
-};
-
-const FORMS={
-  food_safety:{label:"בטיחות במזון",color:"#e74c3c",sections:[
-    {title:"מערכות קירור",questions:["האם מתקיים שימוש במקררים לפי הייעוד שלו?","האם קיימת הפרדה בין גולמי למוכן לאכילה?","האם כל המזון מכוסה / עטוף?","האם נצפו מזון ללא מדבקת תאריך פתיחה?","האם ביצים טריות מאוחסנות במקום יעודי?"]},
-    {title:"תהליכי ייצור: מטבח חם",questions:['האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',"האם קיים ברז וכיור + אמצעי היגיינה זמינים, תקינים ומלאים?","האם מתבצע מעקב טמפ' של המזון לכל אורך התהליך?","האם מתבצע תיעוד של בישול ושחזור מזון?","האם מתבצע תיעוד של מזון מצונן?","האם קיים סדר המזון על-גבי עגלות בצורה נכונה ועם מדבקה ברורה?","שמן הטיגון בצ'יפסר נקי? האם קיים תיעוד על סינון/החלפה?",'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף?']},
-    {title:"תהליכי ייצור: עיבוד בשר",questions:['האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',"האם קיים ברז וכיור + אמצעי היגיינה זמינים, תקינים ומלאים?",'האם קיימת הפרדה בין המדורים בזמן עבודה? אין ערבוב בין בע"ד','האם מתבצע תיעוד של הבע"ד המופשר?','האם הבע"ד מסודר על גסטרונומים מחוררים ומתועד במדבקה ייעודית?','האם התבלינים/קטניות מאוחסנים בצורה תקינה?']},
-    {title:"תהליכי ייצור: חיטוי",questions:['האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',"האם קיים ברז וכיור + אמצעי היגיינה זמינים, תקינים ומלאים?","בדיקה מדגמית לריכוז חומר החיטוי","האם תהליך החיטוי מתועד בטופס?",'האם הירקות המחוטאים נמצאים בקירור ע"ג עגלה עם תאריך ייצור?']},
-    {title:"תהליכי ייצור: עיבוד ירקות / הכנת סלטים",questions:['האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',"האם קיים ברז וכיור + אמצעי היגיינה זמינים, תקינים ומלאים?",'האם הירקות המחוטאים נמצאים בקירור ע"ג עגלה עם תאריך ייצור?',"האם הסלטים המוכנים מאוחסנים בקירור עד לזמן ההגשה?",'האם יש תיעוד של צינון מזון בטופס "קירור מהיר"?','האם התבלינים/קטניות מאוחסנים בצורה תקינה?']},
-    {title:"אזור ההגשה וחדר אוכל",questions:['האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',"האם קיים ברז וכיור + אמצעי היגיינה זמינים, תקינים ומלאים?","האם נשמרות דוגמאות מזון ולמשך הזמן הנדרש ובמקרר ייעודי? (72 שעות)","האם מתקיים מילוי תקין של טופס דוגמאות מזון?","האם יש מגע ישיר בין המזון המוגש למוצרי עץ?"]},
-    {title:"עובדים",questions:["האם העובדים לובשים בגדי עבודה נקיים? נעלי עבודה?","האם לעובדים יש כיסוי ראש?","האם נצפו עובדים ללא כפפות?","האם העובדים מעשנים בשטח המטבח וחדר האוכל?","האם נצפו עובדים שעובדים בניגוד לכללי בטיחות במזון?"]},
-  ]},
-  cleanliness:{label:"סיור ניקיון",color:"#2980b9",sections:[
-    {title:"רחבת כניסה / חדר אוכל",questions:["האם אזור הקופות נקי","האם עמדת הצטיידות (סכום ומגשים) נקייה ומסודרת","האם אזור כניסה לחדר אוכל נקי","האם קיימים אמצעי היגיינה תקינים ומלאים?"]},
-    {title:"עמדות הגשה",questions:["האם פלנצ'ות נקיות ומוכנות לעבודה","האם הצ'פסרים מכוסים ומכובים","האם המנדפים נקיים - עמדות הגשה","האם דלפקי הגשה ומשטחי עבודה נקיים","האם פסים קרים נקיים","האם פסים חמים נקיים","האם הריצפה והתעלות ריקות משאריות מזון - עמדות הגשה","האם מקררים בדלפקי הגשה ריקים ונקיים","האם קיימים אמצעי היגיינה תקינים ומלאים?"]},
-    {title:"חדר אוכל מקצה לקצה",questions:["האם השולחנות והכיסאות נקיים (פירורים, כתמים)","האם עמדת מיקרוגל נקייה","האם הרצפה והשטיחים נקיים","האם עמדות שתייה נקיות ומלאות בכוסות","האם פחי אשפה מרוקנים ונקיים - חדר אוכל"]},
-    {title:"מטבח חם",questions:["האם התנורים נקיים","האם המחבתות (פרימה) נקיות","האם הדוד מים נקי וללא אבנית","האם משטחי עבודה נקיים - מטבח חם","האם הריצפה והתעלות ריקות משאריות מזון - מטבח חם","האם פחי אשפה ריקים ונקיים - מטבח חם","פותחני קופסאות שימורים נקי וללא חלודה","האם בלסט צילר נקי - מטבח חם","האם מקררים נקיים","האם עגלות ופיילות נקיות"]},
-    {title:"סלטייה / חיטוי",questions:["האם מקרר סלטים נקי וללא עובש במדפים","האם משטחי עבודה נקיים","האם הריצפה והתעלות ריקות משאריות מזון - סלטייה","האם מכונות חיתוך נקיות משאריות מזון","האם פחי אשפה ריקים ונקיים - סלטייה","האם בלסט צילר נקי - סלטייה","האם עגלות ופיילות נקיות","האם קיימים אמצעי היגיינה תקינים ומלאים?"]},
-    {title:"מדיח ואזור כלים",questions:["האם המסוע החיצוני נקי","האם בוצע פירוק דיזות","האם בוצע פירוק רשתות","האם בוצע פירוק וניקוי וילונות המדיח","האם קירות פנים מדיח נקיים","האם פחי אשפה ריקים ונקיים - מדיח","האם הריצפה והתעלות ריקות משאריות מזון - מדיח","האם מדיח גסטרונום נקי","האם מדפי אחסון נקיים"]},
-    {title:"קצבייה",questions:["האם משטחי עבודה נקיים - קצבייה","האם קירות נקיים - קצבייה","האם מדפים נקיים","האם מקררים נקיים","האם מטחנת בשר נקייה","האם הריצפה והתעלות ריקות משאריות מזון - קצבייה","האם פחי אשפה ריקים ונקיים - קצבייה"]},
-  ]},
-  expiry:{label:"פגי תוקף / FIFO",color:"#8e44ad",sections:[]},
-  raw:{label:"סיור גלם",color:"#27ae60",sections:[
-    {title:"רחבת כניסה חדר אוכל",questions:["ניקיון ואסתטיקה כללית","כיסאות וספסלים תקינים","שילוט ברור ומסודר","שטיחים נקיים","צמחיה מטופחת"]},
-    {title:"עמדות הגשה",questions:["ניקיון עמדות הגשה","תאורה תקינה בעמדות","מזון מוצג כראוי","תיוג מזון תקין","טמפרטורות שמירה תקינות","עמדות ריקות מזון ישן","מיכלי הגשה נקיים"]},
-    {title:"חדר אוכל מקצה לקצה",questions:["שולחנות נקיים","כיסאות תקינים ונקיים","רצפה נקייה","חלונות ומראות נקיים","תאורה תקינה","פחי אשפה מרוקנים"]},
-    {title:"מטבח חם",questions:["ניקיון כללי מטבח","ציוד בישול תקין","אחסון חומרי גלם","בטיחות אש","ביגוד עובדים","היגיינה אישית","סדר וארגון","ציוד מדידת טמפרטורה","מדבקות ותיוג"]},
-    {title:"מטבח קר / סלטייה",questions:["ניקיון כללי","אחסון ירקות נכון","קוד צבעים","ציוד חיתוך תקין","מקררים מסודרים","תיוג מוצרים"]},
-    {title:"קצבייה",questions:["ניקיון קצבייה","ציוד קצבייה תקין","אחסון בשר נכון","הפרדת סוגי בשר","תיוג ותאריכים","קוד צבעים"]},
-  ]},
-};
-// Add icons to labels
-var FORM_ICONS={food_safety:"🛡️",cleanliness:"🧹",expiry:"📋",raw:"🔍"};
-
+// Status options
 const ST=[
-  {v:"ok",    l:"תקין",      c:"#27ae60",bg:"#eafaf1",p:100},
-  {v:"partial",l:"חלקי",    c:"#f39c12",bg:"#fef9e7",p:50},
-  {v:"fail",  l:"לא תקין",  c:"#e74c3c",bg:"#fdedec",p:0},
-  {v:"na",    l:"לא רלוונטי",c:"#95a5a6",bg:"#f2f3f4",p:null},
+  {v:"ok",    l:"✅ תקין",        c:"#27ae60",bg:"#eafaf1",p:100},
+  {v:"partial",l:"⚠️ חלקי",       c:"#f39c12",bg:"#fef9e7",p:50},
+  {v:"fail",  l:"❌ לא תקין",     c:"#e74c3c",bg:"#fdedec",p:0},
+  {v:"na",    l:"➖ לא רלוונטי",  c:"#95a5a6",bg:"#f2f3f4",p:null},
 ];
-// Display labels with emoji
-var ST_LABELS={ok:"✅ תקין",partial:"⚠️ חלקי",fail:"❌ לא תקין",na:"➖ לא רלוונטי"};
 
-function LS(k,d){try{var s=localStorage.getItem(k);return s?JSON.parse(s):d;}catch{return d;}}
-function SLS(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
-var S={kitchen:KITCHENS[0],formKey:'food_safety',inspector:'',date:new Date().toISOString().split('T')[0],answers:LS('kq9',{}),reports:LS('kqr9',[]),col:{}};
-function sk(){return S.kitchen+'__'+S.formKey+'__'+S.date;}
-function sa(){return S.answers[sk()]||{};}
-function setA(k,v){if(!S.answers[sk()])S.answers[sk()]={};S.answers[sk()][k]=v;SLS('kq9',S.answers);}
+// ── SAFETY AT WORK (identical for all kitchens) ─────────────────────
+const SAFETY_WORK={
+  label:"🦺 בטיחות בעבודה", color:"#c0392b",
+  sections:[
+    {title:"חשמל",questions:[
+      "רבי שקע (מפצלים)?",
+      "שקעים/תקעים לא תקינים",
+      "תשתיות- סדר בדלפקים- חיווט, עמדה תקינה",
+      "שקעים מוגנים מים?",
+    ]},
+    {title:"ציוד / מחסן",questions:[
+      "שימוש בציוד מגן אישי — נעלי עבודה תקניים",
+      "כפפות מגן (חומרים מסוכנים, סיכוך, חום)",
+      "משקפי מגן",
+      "ציוד במחסן: ציוד ללא שימוש, אחסון בצורה תקנית, מדפים מקובעים",
+      "אחסון חומרים מסוכנים בארון ייעודי ומשולט — מאצרות",
+      "וודא קיום הוראות הבטיחות בשימוש בחומרים",
+      "וודא החזרת חומרי הניקיון לארון הייעודי בסיום השימוש",
+      'וודא שהציוד מונח במרחק מינימלי של 40 ס"מ מגופי התאורה',
+      "וודא כי האחסון נמוך מ-0.5 מטר מגובה המתז",
+      "וודא שאין אחסון של ציוד כבד בגובה",
+    ]},
+    {title:"תאורה, שילוט, יציאות חירום",questions:[
+      "תאורה, שילוט ויציאות חירום תקינות",
+      "הגישה ליציאה/מעברי המטבח/שולחנות עבודה פנויה",
+    ]},
+    {title:"עבודת מטבח — סכינים",questions:[
+      "וודא אחסון סכינים/כלים חדים בכלי ייעודי/מגנט",
+      "וודא התאמת סכין למשימה",
+    ]},
+    {title:"עמדת עבודה",questions:[
+      "עמדה מסודרת — לא קיימות סכנות לעובדים",
+      "וודא קיום עבודת צוות בעמדות צמודות",
+      "עמדות חיצוניות — וודא מניעת סכנה מסועדים",
+    ]},
+    {title:"רצפת עבודה",questions:[
+      "אין מים על הרצפה בכמות מסוכנת",
+      "רצפה נקייה מחלקי מזון",
+      "קרח על רצפת מקפיא",
+      "אין שמן על הרצפה (רצפה שומנית)",
+    ]},
+    {title:"צ'יפסר",questions:[
+      "וודא ניקיון הרצפה בצמוד לצ'יפסר",
+      "וודא פינוי שמן קר בלבד מהצ'יפסר",
+      "וודא פינוי השמן למיכלים ייעודיים",
+    ]},
+    {title:"עבודה עם מכונות",questions:[
+      "הכרת מכשיר העבודה ותקינות חלקי המכשיר",
+      "עבודה על המכשיר רק לפי הוראות היצרן",
+      "בסיום העבודה — ניתוק מהחשמל וניקוי כמצוין בהוראות היצרן",
+    ]},
+    {title:"שינוע ועבודה פיזית",questions:[
+      "אין להרים ציוד כבד/סירים ללא עזרה נכונה",
+      "שינוע עגלות לפי נוהל",
+      "מעבר כלים/ציוד חם במטבח",
+      "הרמת סירים כבדים ללא עזרה",
+    ]},
+    {title:"חומרים מסוכנים ובטיחות כללית",questions:[
+      "האם כלל החומרים מסומנים (מדבקת שם החומר)?",
+      "האם החומרים בתוקף?",
+      "האם חומרי הניקוי מאוחסנים במאצרות בנפח של 110% מהמיכל הגדול ביותר?",
+      "האם יש קלסר של כלל החומרים המסוכנים המצויים בעיסוקם של העובדים?",
+      "יש לוודא כי גלילי הגז של הסודה מקובעים ומשולטים",
+      "האם קיים חשמל חשוף — סכנת התחשמלות?",
+      "האם השקעים תקינים (לא שבורים ובעלי מכסה הגנה באזורים רטובים)?",
+      "האם דלתות החרום תקינות ולא נעולות?",
+      "האם קיימות הוראות בטיחות בסמוך לעמדות העבודה?",
+      "האם העובדים משתמשים בציוד מגן אישי בהתאם לסיכון?",
+      "האם מנגנון אדם לכוד במקפיא תקין?",
+      "האם המדפים מקובעים?",
+      "יש לתשאל 2 עובדים לפחות — ולוודא כי עברו הדרכה ומכירים את הסיכונים בעמדת העבודה",
+    ]},
+  ]
+};
 
-function getFormSections(formKey,kitchen){
-  if(formKey==='expiry') return EXPIRY_SECTIONS[kitchen]||EXPIRY_SECTIONS['Bento'];
-  return FORMS[formKey].sections;
+// ── FOOD SAFETY FORMS ────────────────────────────────────────────────
+const FOOD_SAFETY={
+  "Bento":{label:"🛡️ בטיחות מזון — בנטו",color:"#e74c3c",sections:[
+    {title:"עמדות הגשה",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם הטמפ' של המזון בהגשה תקינה?",
+      "האם נשמרות דוגמאות מזון ולמשך הזמן הנדרש ובמקרר ייעודי? (72 שעות)",
+      "האם מתקיים מילוי תקין של טופס דוגמאות מזון?",
+      "האם יש מגע ישיר בין המזון המוגש למוצרי עץ?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם נצפה מזון לא מכוסה במקררי הגשה?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקררי הגשה?",
+      "שמן הטיגון בצ'יפסר נקי?",
+      "האם מתבצע תיעוד טופס החלפה/סינון שמן?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"מטבח חם",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם מתבצע מעקב טמפ' של המזון לכל אורך התהליך?",
+      "האם נמצא מזון פסול?",
+      "האם מתבצע תיעוד של בישול ושחזור מזון?",
+      "האם מתבצע תיעוד של מזון מצונן?",
+      "האם קיים סדר המזון על-גבי עגלות בצורה נכונה ועם מדבקה ברורה?",
+      "האם המוצרים המוגמרים במקרר 1 תואמים לטופס של הבישול והצינון?",
+      "שמן הטיגון בצ'יפסר נקי?",
+      "האם מתבצע תיעוד טופס החלפה/סינון שמן?",
+      'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתקיים שימוש במקרר מס' 2 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקרר מס' 3 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר הכנת סלטים",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      'האם הירקות המחוטאים נמצאים בקירור ע"ג עגלה עם תאריך ייצור?',
+      "האם הסלטים המוכנים מאוחסנים בקירור עד לזמן ההגשה?",
+      'האם יש תיעוד של צינון מזון בטופס "קירור מהיר"?',
+      'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם נמצא מזון פסול?",
+      "האם מתקיים שימוש במקררי מס' 1 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר חיטוי ירקות ופירות",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם תוצאות הבדיקה המדגמית לריכוז חומר החיטוי תקין?",
+      "האם תהליך החיטוי מתועד בטופס?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתקיים שימוש במקררי מס' 9 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם ביצים טריות מאוחסנות במקום יעודי?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"קצבייה",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם קיימת שמירה על הפרדה בין המדורים בזמן עבודה?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתבצע תיעוד של הבע\"ד המופשר?",
+      "האם הבע\"ד מסודר על גסטרונומים מחוררים ומתועד במדבקה ייעודית?",
+      'האם התבלינים מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "האם מתקיים שימוש במקרר מס' 6 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקרר מס' 7 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקררי מס' 2 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+  ]},
+  "Nine Dine":{label:"🛡️ בטיחות מזון — ניין דיין",color:"#e74c3c",sections:[
+    {title:"עמדות הגשה",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם הטמפ' של המזון בהגשה תקינה?",
+      "האם נשמרות דוגמאות מזון ולמשך הזמן הנדרש ובמקרר ייעודי? (72 שעות)",
+      "האם מתקיים מילוי תקין של טופס דוגמאות מזון?",
+      "האם יש מגע ישיר בין המזון המוגש למוצרי עץ?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם נצפה מזון לא מכוסה במקררי הגשה?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקררי הגשה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"מטבח חם",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם מתבצע מעקב טמפ' של המזון לכל אורך התהליך?",
+      "האם נמצא מזון שיש לפסול?",
+      "האם מתבצע תיעוד של בישול ושחזור מזון?",
+      "האם מתבצע תיעוד של מזון מצונן?",
+      "האם קיים סדר המזון על-גבי עגלות בצורה נכונה ועם מדבקה ברורה?",
+      "האם המוצרים המוגמרים במקרר 4 תואמים לטופס של הבישול והצינון?",
+      "שמן הטיגון בצ'יפסר נקי?",
+      "האם מתבצע תיעוד טופס החלפה/סינון שמן?",
+      "בדיקה של TPM לשמן",
+      'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתקיים שימוש במקררי מס' 4 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר הכנת סלטים",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      'האם הירקות המחוטאים נמצאים בקירור ע"ג עגלה עם תאריך ייצור?',
+      "האם הסלטים המוכנים מאוחסנים בקירור עד לזמן ההגשה?",
+      'האם יש תיעוד של צינון מזון בטופס "קירור מהיר"?',
+      'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם נמצא מזון פסול?",
+      "האם מתקיים שימוש במקררי מס' 1 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקררי מס' 15 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר חיטוי ירקות ופירות",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם תוצאות הבדיקה המדגמית לריכוז חומר החיטוי תקין?",
+      "האם תהליך החיטוי מתועד בטופס?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתקיים שימוש במקררי מס' 14 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם ביצים טריות מאוחסנות במקום יעודי?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"קצבייה",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם קיימת שמירה על הפרדה בין המדורים בזמן עבודה?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתבצע תיעוד של הבע\"ד המופשר?",
+      "האם הבע\"ד מסודר על גסטרונומים מחוררים ומתועד במדבקה ייעודית?",
+      'האם התבלינים מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "האם מתקיים שימוש במקרר מס' 2 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף במקרר מס' 2?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקרר מס' 2?",
+      "האם מתקיים שימוש במקרר מס' 3 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף במקרר מס' 3?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקרר מס' 3?",
+      "האם מתקיים שימוש במקרר מס' 5 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף במקרר מס' 5?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקרר מס' 5?",
+      "האם מתקיים שימוש במקרר מס' 8 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף במקרר מס' 8?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקרר מס' 8?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"קונדיטוריה",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתבצע תיעוד של ייצור קינוחים?",
+      "האם מתקיים שימוש במקרר מס' 6 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה במקרר מס' 6?",
+      "האם כל המזון מכוסה / עטוף במקרר מס' 6?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקרר מס' 6?",
+      "האם מתקיים שימוש במקפיא מס' 9 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה במקפיא מס' 9?",
+      "האם כל המזון מכוסה / עטוף במקפיא מס' 9?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקפיא מס' 9?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר כריכים",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתבצע תיעוד של ייצור מוצרי מזון?",
+      "האם נשמרו דוגמאות מזון?",
+      "האם מתקיים שימוש במקרר מס' 1.1 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקרר מס' 1.2 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקרר מס' 1.3 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+  ]},
+  "Nona":{label:"🛡️ בטיחות מזון — נונה",color:"#e74c3c",sections:[
+    {title:"עמדות הגשה",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם הטמפ' של המזון בהגשה תקינה?",
+      "האם נשמרות דוגמאות מזון ולמשך הזמן הנדרש ובמקרר ייעודי? (72 שעות)",
+      "האם מתקיים מילוי תקין של טופס דוגמאות מזון?",
+      "האם יש מגע ישיר בין המזון המוגש למוצרי עץ?",
+      "קיימת סכנה לזיהום צולב?",
+      "האם נצפה מזון לא מכוסה במקררי הגשה?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה במקררי הגשה?",
+      "האם מתקיים שימוש במקרר מס' 5 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"מטבח חם",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם מתבצע מעקב טמפ' של המזון לכל אורך התהליך?",
+      "האם נמצא מזון פסול?",
+      "האם מתבצע תיעוד של בישול?",
+      "שמן הטיגון בצ'יפסר נקי?",
+      "האם מתבצע תיעוד טופס החלפה/סינון שמן?",
+      "בדיקה של TPM לשמן",
+      'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר הכנת סלטים",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      'האם הירקות המחוטאים נמצאים בקירור עם תאריך ייצור?',
+      "האם הסלטים המוכנים מאוחסנים בקירור עד לזמן ההגשה?",
+      'האם יש תיעוד של צינון מזון בטופס "קירור מהיר"?',
+      'האם התבלינים/קטניות מאוחסנים בצורה תקינה כולל שם, תאריך פתיחה ותוקף ע"ג כלי האחסון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם נמצא מזון פסול?",
+      "האם מתקיים שימוש במקררים לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+    {title:"חדר חיטוי ירקות ופירות",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "האם תוצאות הבדיקה המדגמית לריכוז חומר החיטוי תקין?",
+      "האם תהליך החיטוי מתועד בטופס?",
+      'האם הירקות המחוטאים נמצאים בקירור ע"ג עגלה עם תאריך ייצור?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתקיים שימוש במקררי מס' 1 לפי הייעוד שלו?",
+      "האם קיימת הפרדה בין גולמי למוכן לאכילה?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+  ]},
+  "בתי קפה - איילנס":{label:"🛡️ בטיחות מזון — בתי קפה",color:"#e74c3c",sections:[
+    {title:"מחסן ואזורי אחסון",questions:[
+      "האם נצפו מוצרים פגי תוקף?",
+      "האם כל המזון מצופה/עטוף?",
+      "האם כל המזון (שהגיע ממטבח ראשי/קנוי) עם תאריך ייצור/פתיחה/תוקף?",
+      "האם האחסון בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?",
+      "האם קיימת מדבקה ייעודית למוצרים שיצאו מהקפאה?",
+    ]},
+    {title:"אזור ההגשה + עמדת הגשה",questions:[
+      "האם המוצרים המוגמרים שבמקרר בתוקף? (פיצה/קיש/קפה...)",
+      "האם קיימת מדבקה ייעודית למוצרים שיצאו מהקפאה?",
+      "האם המוצרים שמוגשים בהכנת המטבח עם תאריך ייצור?",
+    ]},
+    {title:"עובדים",questions:[
+      "האם העובדים לובשים בגדי עבודה נקיים? נעלי עבודה?",
+      "האם לעובדים יש כובע?",
+      "האם נצפו עובדים ללא כפפות?",
+      "האם העובדים מעשנים בשטח המטבח וחדר האוכל?",
+    ]},
+    {title:"מקררים",questions:[
+      "האם נצפו מוצרים פגי תוקף?",
+      "האם נצפו מוצרים באריזה פגומה או פתוחה?",
+    ]},
+    {title:"חדר כריכים",questions:[
+      'האם מתקיימת עבודה ע"פ קוד צבעים הנהוג בניר עציון?',
+      "קיימת סכנה לזיהום צולב?",
+      "האם מתבצע תיעוד של ייצור מוצרי מזון?",
+      "האם נשמרו דוגמאות מזון?",
+      "האם מתקיים שימוש במקרר מס' 1.1 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקרר מס' 1.2 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם מתקיים שימוש במקרר מס' 1.3 לפי הייעוד שלו?",
+      "האם כל המזון מכוסה / עטוף?",
+      "האם נצפו מזון ללא מדבקת תאריך פתיחה?",
+      "האם העובדים לבושים בצורה תקינה (כפפות, כיסוי ראש, סינר)?",
+      "האם נצפו עובדים שמשתמשים בטלפון בזמן העבודה?",
+    ]},
+  ]},
+};
+
+// ── EXPIRY FORMS ─────────────────────────────────────────────────────
+const EXPIRY={
+  "Bento":{label:"📋 פגי תוקף — בנטו",color:"#8e44ad",sections:[
+    {title:"מקרר 9 — ירקות גולמי",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 5 — מוגמר מטבח חם",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:'מקרר 2 — בע"ד בתהליך',questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 1 — סלטייה מוגמר",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 6 — הפשרות בעלי כנף (קצבייה)",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 7 — הפשרות בקר (קצבייה)",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 3 — חלבי",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 4",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מחסן",questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?","מוצרי ניקוי מרוכזים במקום אחד בנפרד? נעולים בארון נפרד?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים במטבח מעוקרים ובתוקף?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+  ]},
+  "Nine Dine":{label:"📋 פגי תוקף — ניין דיין",color:"#8e44ad",sections:[
+    {title:"מקרר 4 — מטבח חם מוגמר, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:'מקרר 3 — קצבייה בע"ד בתהליך, קומה 0',questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 8 — הפשרת בעלי כנף, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 5 — הפשרת בקר, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 2 — הפשרת דגים, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 7 — חלבי מוגמר, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 1 — סלטייה מוגמר, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 6 — קונדיטוריה מוגמר, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 10 — מטבח חם, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 9 — קונדיטוריה, קומה 0",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+  ]},
+  "Nona":{label:"📋 פגי תוקף — נונה",color:"#8e44ad",sections:[
+    {title:"מקרר 1 — ירקות גולמי",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר מוגמר 3",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר מוגמר 4",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:'מקרר 5 — בע"ד בתהליך',questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר מוגמר 6 — מעדנים",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר מוגמר 7 — חלבי",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:'מקרר מוגמר 8 — ד"מ',questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר מוגמר 9",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 1",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מחסן",questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?","מוצרי ניקוי מרוכזים במקום אחד בנפרד? נעולים בארון נפרד?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים במטבח מעוקרים ובתוקף?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+  ]},
+  "מרלוג":{label:'📋 פגי תוקף וניקיון — מרלו"ג',color:"#8e44ad",sections:[
+    {title:"מקרר 15 — ירקות לאחר חיטוי, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר 16 — ירקות גולמי, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 11 — בעלי כנף, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 12 — קפואים, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 13 — בקר, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקפיא 14 — דגים, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקפיא נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מחסן ראשי (2)",questions:["האם המחסן מסודר ונקי?","האם מוצרי ניקוי מרוכזים במקום אחד בנפרד? נעולים בארון נפרד?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם התבלינים במטבח מעוקרים ובתוקף?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר מעדנים 001-9, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר חלב 002-9, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מחסן קונדיטוריה (3)",questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מחסן בתי קפה (3)",questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מחסן מטבחונים (4)",questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"מקרר OCC 003-9, קומה -2",questions:["מילוי טפסי בקרת טמפ' במקררים ומקפיאים 2 פעמים ביום כנדרש ובאופן רציף?","האם המקרר נקי?","האם נמצאו פגי תוקף?!","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:'מחסן חד"פ ושתיה (1)',questions:["האם המחסן מסודר ונקי?","האם האחסון מתבצע בהגבהה? תוך הפרדה בין מוצרי אריזה ומוצרי מזון?","בדיקת פגי תוקף, עבודה לפי FIFO?","האם נצפו במחסן מוצרים באריזה פגומה או פתוחה?","האם נמצא מוצר עם תוקף קצר?"]},
+    {title:"משאית",questions:["האם המשאית נקייה?","האם הקירור עובד תקין? (4-5 מע\"צ)","האם התבצע שינוע מזון קר בקירור?","האם התבצע הובלת חומרי ניקיון בנפרד ממזון?"]},
+  ]},
+};
+
+// ── CLEANLINESS FORMS ────────────────────────────────────────────────
+const CLEAN={
+  "Bento":{label:"🧹 סיור ניקיון — בנטו",color:"#2980b9",sections:[
+    {title:"רחבת כניסה חדר אוכל",questions:["האם אזור הקופות נקי","האם עמדת הצטיידות (סכום ומגשים) נקייה ומסודרת","האם אזור כניסה לחדר אוכל נקי"]},
+    {title:"עמדות הגשה",questions:["האם פלנצ'ות נקיות ומוכנות לעבודה","האם הצ'פסרים מכוסים ומכובים","האם המנדפים נקיים - עמדות הגשה","האם דלפקי הגשה ומשטחי עבודה נקיים","האם פסים קרים נקיים","האם פסים חמים נקיים","האם הריצפה והתעלות ריקות משאריות מזון - עמדות הגשה","האם מקררים בדלפקי הגשה ריקים ונקיים","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר אוכל מקצה לקצה (כולל אזור החומוס והמעדנייה)",questions:["האם השולחנות והכיסאות נקיים (פירורים, כתמים)","האם עמדת מיקרוגל נקייה","האם הרצפה והשטיחים נקיים","האם עמדות שתייה נקיות ומלאות בכוסות","האם פחי אשפה מרוקנים ונקיים - חדר אוכל"]},
+    {title:"מטבח חם",questions:["האם התנורים נקיים","האם המחבתות (פרימה) נקיות","האם הדוד מים נקי וללא אבנית","האם משטחי עבודה נקיים - מטבח חם","האם הריצפה והתעלות ריקות משאריות מזון - מטבח חם","האם פחי אשפה ריקים ונקיים - מטבח חם","פותחני קופסאות שימורים נקי וללא חלודה","האם בלסט צילר נקי - מטבח חם","האם מקררים נקיים","האם עגלות ופיילות נקיות","האם מיקסרים (רמבו) נקיים","האם קירות המטבח נקיים","האם המדפים והארונות נקיים","האם המנדפים נקיים - מטבח חם","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר הכנת סלטים",questions:["האם מקרר סלטים נקי וללא עובש במדפים","האם משטחי עבודה נקיים","האם הריצפה והתעלות ריקות משאריות מזון - סלטייה","האם מכונות חיתוך נקיות משאריות מזון (כולל חלקי עבודה נלווים)","האם פחי אשפה ריקים ונקיים - סלטייה","האם בלסט צילר נקי - סלטייה","האם עגלות ופיילות נקיות","האם קירות (חרסינה) נקיים","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר חיטוי ירקות ופירות",questions:["האם מתקן חיטוי (ג'קוזי או כיור) נקי","האם משטחי עבודה נקיים - חיטוי","האם מקרר סלטים נקי וללא עובש במדפים","האם עגלות ופיילות נקיות","האם הריצפה והתעלות ריקות משאריות מזון - חיטוי","האם קירות (חרסינה) נקיים","האם פחי אשפה ריקים ונקיים - חיטוי","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר שטיפה ומדיחי כלים",questions:["האם המסוע החיצוני נקי","האם בוצע פירוק דיזות","האם בוצע פירוק רשתות","האם בוצע פירוק וניקוי וילונות המדיח","האם קירות פנים מדיח נקיים","האם פחי אשפה ריקים ונקיים - מדיח","האם הריצפה והתעלות ריקות משאריות מזון - מדיח","האם מדיח גסטרונום נקי","האם מדפי אחסון נקיים","האם עגלות ופיילות נקיות","האם עגלות אחסון צלחות נקיים","האם קירות נקיים","האם קרשי העבודה נקיים ולא בלויים","האם המעצרות כימיקלים נקייה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"רמפה ודחסנית",questions:["האם אזור הרמפה נקי ופנוי","האם אזור דחסנית נקי וללא שאריות מזון פזורות"]},
+    {title:"קצבייה",questions:["האם משטחי עבודה נקיים - קצבייה","האם קירות נקיים - קצבייה","האם מדפים נקיים","האם מקררים נקיים","האם מטחנת בשר נקייה","האם הריצפה והתעלות ריקות משאריות מזון - קצבייה","האם פחי אשפה ריקים ונקיים - קצבייה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+  ]},
+  "Nine Dine":{label:"🧹 סיור ניקיון — ניין דיין",color:"#2980b9",sections:[
+    {title:"רחבת כניסה חדר אוכל",questions:["האם אזור הקופות נקי","האם עמדת הצטיידות (סכום ומגשים) נקייה ומסודרת","האם עמדת שטיפת ידיים נקייה","האם אזור כניסה לחדר אוכל נקי","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"עמדות הגשה",questions:["האם פלנצ'ות נקיות ומוכנות לעבודה","האם המנדפים נקיים - עמדות הגשה","האם דלפקי הגשה ומשטחי עבודה נקיים","האם פסים קרים נקיים","האם פסים חמים נקיים","האם הריצפה והתעלות ריקות משאריות מזון - עמדות הגשה","האם מקררים בדלפקי הגשה ריקים ונקיים","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר אוכל מקצה לקצה",questions:["האם השולחנות והכיסאות נקיים (פירורים, כתמים)","האם עמדת מיקרוגל נקייה","האם הרצפה והשטיחים נקיים","האם עמדות שתייה נקיות ומלאות בכוסות","האם פחי אשפה מרוקנים ונקיים - חדר אוכל","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"מטבח חם",questions:["האם התנורים נקיים - מטבח חם","האם המחבתות (פרימה) נקיות","האם הדוד מים נקי וללא אבנית","האם הצ'פסרים מכוסים ומכובים","האם משטחי עבודה נקיים - מטבח חם","האם הריצפה והתעלות ריקות משאריות מזון - מטבח חם","האם פחי אשפה ריקים ונקיים - מטבח חם","פותחני קופסאות שימורים נקי וללא חלודה","האם בלסט צילר נקי - מטבח חם","האם מקררים נקיים","סימון חומרי הגלם במדבקות (ייצור, פתיחה, תוקף) - מטבח חם","האם עגלות ופיילות נקיות","האם מיקסרים (רמבו) נקיים","האם קירות המטבח נקיים","האם המדפים והארונות נקיים","האם המנדפים נקיים - מטבח חם","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר הכנת סלטים",questions:["האם מקרר סלטים נקי וללא עובש במדפים","האם משטחי עבודה נקיים","האם הריצפה והתעלות ריקות משאריות מזון - סלטייה","האם מכונות חיתוך נקיות משאריות מזון (כולל חלקי עבודה נלווים)","האם פחי אשפה ריקים ונקיים - סלטייה","האם בלסט צילר נקי - סלטייה","האם עגלות ופיילות נקיות","האם קירות (חרסינה) נקיים","האם מנדפים נקיים - מטבח חם","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר חיטוי ירקות ופירות",questions:["האם מתקן חיטוי (ג'קוזי או כיור) נקי","האם משטחי עבודה נקיים - חיטוי","האם מקרר סלטים נקי וללא עובש במדפים","האם עגלות ופיילות נקיות","האם הריצפה והתעלות ריקות משאריות מזון - חיטוי","האם קירות (חרסינה) נקיים","האם פחי אשפה ריקים ונקיים - חיטוי","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר שטיפה ומדיחי כלים",questions:["האם המסוע החיצוני נקי","האם בוצע פירוק דיזות","האם בוצע פירוק רשתות","האם בוצע פירוק וניקוי וילונות המדיח","האם קירות פנים מדיח נקיים","האם פחי אשפה ריקים ונקיים - מדיח","האם הריצפה והתעלות ריקות משאריות מזון - מדיח","האם מדיח גסטרונום נקי","האם מדפי אחסון נקיים","האם עגלות ופיילות נקיות","האם עגלות אחסון צלחות נקיים","האם קירות נקיים","האם קרשי העבודה נקיים ולא בלויים","האם המאצרות כימיקלים נקייה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"קצבייה",questions:["האם הכיורים נקיים - קצבייה","האם משטחי עבודה נקיים - קצבייה","האם קירות נקיים - קצבייה","האם מדפים נקיים","האם מקררים נקיים","האם מטחנת בשר נקייה","האם הריצפה והתעלות ריקות משאריות מזון - קצבייה","האם פחי אשפה ריקים ונקיים - קצבייה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"קונדיטוריה",questions:["האם הכיורים נקיים - קונדיטוריה","האם משטחי עבודה נקיים - קונדיטוריה","האם התנורים נקיים - קונדיטוריה","האם הארונות ומדפים נקיים","האם המקרר נקי","האם הריצפה והתעלות ריקות משאריות מזון","האם מקרר והמדפים ללא עובש","האם המזון במקרר מכוסה ועם מדבקות","האם פחי אשפה ריקים ונקיים - קונדיטוריה","האם הריצפה והתעלות ריקות משאריות מזון - קונדיטוריה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+  ]},
+  "Nona":{label:"🧹 סיור ניקיון — נונה",color:"#2980b9",sections:[
+    {title:"רחבת כניסה חדר אוכל",questions:["האם אזור הקופות נקי","האם עמדת הצטיידות (סכום ומגשים) נקייה ומסודרת","האם אזור כניסה לחדר אוכל נקי"]},
+    {title:"עמדות הגשה",questions:["האם פלנצ'ות נקיות ומוכנות לעבודה","האם המנדפים נקיים - עמדות הגשה","האם דלפקי הגשה ומשטחי עבודה נקיים - עמדות הגשה","האם פסים קרים נקיים","האם פסים חמים נקיים","האם הריצפה והתעלות ריקות משאריות מזון - עמדות הגשה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר אוכל מקצה לקצה",questions:["האם השולחנות והכיסאות נקיים (פירורים, כתמים)","האם עמדת מיקרוגל נקייה","האם הרצפה והשטיחים נקיים","האם עמדות שתייה נקיות ומלאות בכוסות","האם פחי אשפה מרוקנים ונקיים - חדר אוכל","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"מטבח חם",questions:["האם התנורים נקיים","האם הדוד מים נקי וללא אבנית","האם הצ'פסרים מכוסים ומכובים","האם משטחי עבודה נקיים - מטבח חם","האם הריצפה והתעלות ריקות משאריות מזון - מטבח חם","האם פחי אשפה ריקים ונקיים - מטבח חם","פותחני קופסאות שימורים נקי וללא חלודה","האם בלסט צילר נקי - מטבח חם","האם מקררים נקיים","האם עגלות ופיילות נקיות","האם מיקסרים (רמבו) נקיים","האם קירות נקיים - מטבח חם","האם המדפים והארונות נקיים","האם המנדפים נקיים - מטבח חם","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר הכנת סלטים",questions:["האם מקרר סלטים נקי וללא עובש במדפים","האם משטחי עבודה נקיים - סלטייה","האם הריצפה והתעלות ריקות משאריות מזון - סלטייה","האם מכונות חיתוך נקיות משאריות מזון (כולל חלקי עבודה נלווים)","האם פחי אשפה ריקים ונקיים - סלטייה","האם עגלות ופיילות נקיות","האם קירות נקיים - סלטייה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר חיטוי ירקות ופירות",questions:["האם מתקן חיטוי (ג'קוזי או כיור) נקי","האם משטחי עבודה נקיים - חיטוי","האם מקרר סלטים נקי וללא עובש במדפים","האם עגלות ופיילות נקיות","האם הריצפה והתעלות ריקות משאריות מזון - חיטוי","האם קירות נקיים - חיטוי","האם פחי אשפה ריקים ונקיים - חיטוי","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"חדר שטיפה ומדיחי כלים",questions:["האם המסוע החיצוני נקי","האם בוצע פירוק דיזות","האם בוצע פירוק רשתות","האם בוצע פירוק וניקוי וילונות המדיח","האם קירות פנים מדיח נקיים","האם פחי אשפה ריקים ונקיים - מדיח","האם הריצפה והתעלות ריקות משאריות מזון - מדיח","האם מדפי אחסון נקיים","האם עגלות ופיילות נקיות","האם עגלות אחסון צלחות נקיים","האם קירות נקיים - מדיח","האם קרשי העבודה נקיים ולא בלויים","האם המאצרות כימיקלים נקייה","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"רמפה ודחסנית",questions:["האם אזור הרמפה נקי ופנוי","האם אזור דחסנית נקי וללא שאריות מזון פזורות"]},
+  ]},
+  "בתי קפה - איילנס":{label:"🧹 סיור ניקיון — בתי קפה",color:"#2980b9",sections:[
+    {title:"רחבת כניסה לבית הקפה",questions:["האם אזור כניסה לבית הקפה נקי","האם אזור הקופות נקי","האם עמדת T.A (סוכר, כפיות, חבקים) מלאה ונקייה","האם פחי אשפה מרוקנים ונקיים"]},
+    {title:"עמדת הגשה",questions:["האם עמדת ההגשה נקייה","האם הקופה נקייה ונעולה","האם עמדת עבודה נקייה","האם עמדת שטיפת ידיים נקייה","האם תנורי חימום / טאבון / טוסטר נקיים","האם אקססוריז נקיים מאבק ומסודרים","האם כלי עבודה נקיים","האם רצפה והתעלות נקיות משאריות מזון","האם מקררי נירוסטה בדלפקי הגשה נקיים","האם וטרינות מאפים וכריכים נקייה ומזמינה","האם מכונת התפוזים נקייה","האם מכונת האייס מלאה","האם מכונת הקפה נקייה","האם כדי החלב נקיים","האם הסכינים והקרשי חיתוך נקיים","האם קרשי העבודה נקיים ולא בלויים","האם תעלות נקיות משאריות מזון","האם קיימים אמצעי היגיינה (סבון ונייר ניגוב) תקינים ומלאים?"]},
+    {title:"פינת ישיבה פנימית",questions:["האם השולחנות, הכיסאות והספות נקיים (פירורים, כתמים)","האם מתקן מלח ופלפל מלא ונקי","האם הרצפה עברה טיטוא ושטיפה","האם פחי אשפה מרוקנים ונקיים"]},
+    {title:"פינת ישיבה חיצונית",questions:["האם השולחנות והכיסאות נקיים (פירורים, כתמים)","האם מתקן מלח ופלפל מלא ונקי","האם הרצפה נקייה","האם פחי אשפה ריקים ונקיים"]},
+    {title:"מחסן",questions:["האם המחסן נקי ומסודר","האם הארונות נקיים"]},
+  ]},
+};
+
+// ── FORM MAP per kitchen ──────────────────────────────────────────────
+function getFormsForKitchen(k){
+  var forms=[];
+  // All kitchens get safety at work
+  forms.push({key:'safety_work',data:SAFETY_WORK});
+  if(FOOD_SAFETY[k]) forms.push({key:'food_safety',data:FOOD_SAFETY[k]});
+  if(EXPIRY[k])      forms.push({key:'expiry',data:EXPIRY[k]});
+  if(CLEAN[k])       forms.push({key:'clean',data:CLEAN[k]});
+  return forms;
 }
 
-function sc(fk,ans,kitchen){
-  var secs=getFormSections(fk,kitchen||S.kitchen);
+// ═══════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════
+function LS(k,d){try{var s=localStorage.getItem(k);return s?JSON.parse(s):d;}catch{return d;}}
+function SLS(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
+
+var S={
+  kitchen:KITCHENS[0],
+  formIdx:0,
+  inspector:'',
+  email:'',
+  date:new Date().toISOString().split('T')[0],
+  answers:LS('kqA10',{}),
+  reports:LS('kqR10',[]),
+  col:{}
+};
+
+function sk(){return S.kitchen+'|'+S.formIdx+'|'+S.date;}
+function sa(){return S.answers[sk()]||{};}
+function setA(k,v){if(!S.answers[sk()])S.answers[sk()]={};S.answers[sk()][k]=v;SLS('kqA10',S.answers);}
+function getCurForm(){return getFormsForKitchen(S.kitchen)[S.formIdx]?.data||null;}
+function getCurSections(){var f=getCurForm();return f?f.sections:[];}
+
+function calcScore(sections,ans){
   var all=[],sum=0;
-  secs.forEach(function(s,si){s.questions.forEach(function(_,qi){all.push(si+'_'+qi);});});
+  sections.forEach(function(s,si){s.questions.forEach(function(_,qi){all.push(si+'_'+qi);});});
   var rel=all.filter(function(k){return ans[k]&&ans[k]!='na';});
   rel.forEach(function(k){var st=ST.find(function(s){return s.v===ans[k];});sum+=(st&&st.p!=null?st.p:0);});
   return{pct:rel.length?Math.round(sum/rel.length):0,answered:rel.length,total:all.length};
@@ -278,49 +746,73 @@ function color(p){return p>=85?'#27ae60':p>=60?'#f39c12':'#e74c3c';}
 function e(id){return document.getElementById(id);}
 var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
 
+// ═══════════════════════════════════════════════════════════════════
+// HOME
+// ═══════════════════════════════════════════════════════════════════
 function initHome(){
   var sel=e('ik');
-  sel.innerHTML=KITCHENS.map(function(k){return'<option value="'+k+'">'+kitchenDisplay(k)+'</option>';}).join('');
-  sel.value=S.kitchen;sel.onchange=function(ev){S.kitchen=ev.target.value;};
+  sel.innerHTML=KITCHENS.map(function(k){return'<option value="'+k+'">'+kname(k)+'</option>';}).join('');
+  sel.value=S.kitchen;
+  sel.onchange=function(ev){S.kitchen=ev.target.value;S.formIdx=0;renderFormBtns();};
   e('ii').value=S.inspector;e('ii').oninput=function(ev){S.inspector=ev.target.value;};
-  e('id').value=S.date;e('id').onchange=function(ev){S.date=ev.target.value;};
-  var fg=e('fg');
-  fg.innerHTML=Object.keys(FORMS).map(function(key){
-    var f=FORMS[key],on=S.formKey===key,icon=FORM_ICONS[key]||'';
-    return '<button class="fb'+(on?' on':'')+'" style="'+(on?'border-color:'+f.color+';border-width:2px;background:'+f.color+'28;color:#fff;font-weight:700':'')+'" onclick="selF(\''+key+'\',this,\''+f.color+'\')">'+icon+' '+f.label+'</button>';
-  }).join('');
+  e('imail').value=S.email;e('imail').oninput=function(ev){S.email=ev.target.value;};
+  e('idate').value=S.date;e('idate').onchange=function(ev){S.date=ev.target.value;};
+  renderFormBtns();
   e('rc').textContent=S.reports.length;
 }
-function selF(key,btn,col){
-  S.formKey=key;
-  document.querySelectorAll('.fb').forEach(function(b){b.className='fb';b.style.cssText='';});
-  btn.className='fb on';btn.style.borderColor=col;btn.style.borderWidth='2px';btn.style.background=col+'28';btn.style.color='#fff';btn.style.fontWeight='700';
+
+function renderFormBtns(){
+  var forms=getFormsForKitchen(S.kitchen);
+  var fg=e('fg');
+  fg.innerHTML=forms.map(function(f,i){
+    var on=S.formIdx===i;
+    var col=f.data.color;
+    return '<button class="fgbtn'+(on?' on':'')+'" style="'+(on?'border-color:'+col+';border-width:2px;background:'+col+'28;color:#fff;font-weight:700':'')+'" onclick="selForm('+i+',this,\''+col+'\')">'+f.data.label+'</button>';
+  }).join('');
 }
+
+function selForm(idx,btn,col){
+  S.formIdx=idx;
+  document.querySelectorAll('.fgbtn').forEach(function(b){b.className='fgbtn';b.style.cssText='';});
+  btn.className='fgbtn on';btn.style.borderColor=col;btn.style.borderWidth='2px';btn.style.background=col+'28';btn.style.color='#fff';btn.style.fontWeight='700';
+}
+
 function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});e(id).classList.add('active');window.scrollTo(0,0);}
 function startInspection(){S.col={};show('fs');renderForm();}
 function goHome(){show('home');initHome();}
 
+// ═══════════════════════════════════════════════════════════════════
+// FORM RENDER
+// ═══════════════════════════════════════════════════════════════════
 function renderForm(){
-  var f=FORMS[S.formKey],secs=getFormSections(S.formKey,S.kitchen),ans=sa(),r=sc(S.formKey,ans,S.kitchen),p=r.pct,col=color(p);
-  e('tbn').textContent=kitchenDisplay(S.kitchen);
+  var f=getCurForm(),secs=getCurSections(),ans=sa();
+  if(!f)return;
+  var r=calcScore(secs,ans),p=r.pct,col=color(p);
+  // Topbar
+  e('tbn').textContent=kname(S.kitchen);
   var sp=e('tbs');sp.textContent=p+'%';sp.style.background=col;
+  // Failed items
   var failed=[];
   secs.forEach(function(s,si){s.questions.forEach(function(q,qi){if(ans[si+'_'+qi]==='fail')failed.push({q:q,k:si+'_'+qi,t:s.title});});});
+  // Photo count
   var phCount=0;secs.forEach(function(s,si){s.questions.forEach(function(_,qi){if(ans[si+'_'+qi+'_photo'])phCount++;});});
-  var icon=FORM_ICONS[S.formKey]||'';
-  e('fhd').innerHTML='<div class="fhd" style="background:linear-gradient(135deg,'+f.color+'14,'+f.color+'04);border:2px solid '+f.color+'28">'+
-    '<div class="fht"><div><div style="font-size:18px;font-weight:800;color:'+f.color+'">'+icon+' '+f.label+'</div>'+
-    '<div style="color:#7f8c8d;font-size:13px;margin-top:3px">'+kitchenDisplay(S.kitchen)+' · '+S.date+(S.inspector?' · '+S.inspector:'')+'</div>'+
-    (phCount?'<div style="color:#2980b9;font-size:12px;margin-top:2px">📷 '+phCount+' תמונות</div>':'')+
-    '</div><div style="text-align:center"><div style="font-size:34px;font-weight:900;color:'+col+';line-height:1">'+p+'%</div>'+
-    '<div style="font-size:11px;color:#7f8c8d;margin-top:2px">'+(p>=60?'✓ עובר':'✗ לא עובר')+'</div></div></div>'+
-    '<div class="pr"><span>'+r.answered+'/'+r.total+' שאלות נענו</span><span style="color:'+col+';font-weight:700">'+p+'%</span></div>'+
-    '<div class="pb"><div class="pf" style="width:'+p+'%;background:linear-gradient(90deg,'+col+','+col+'cc)"></div></div>'+
-    (failed.length?'<div class="fb3"><div style="font-weight:700;color:#e74c3c;margin-bottom:7px;font-size:13px">❌ ממצאים הדורשים טיפול ('+failed.length+')</div>'+
-    failed.map(function(x){return'<div style="font-size:12px;color:#2c3e50;margin-bottom:3px;direction:rtl;line-height:1.5"><b>'+x.t+':</b> '+x.q+(ans[x.k+'_notes']?'<span style="color:#e74c3c"> — '+ans[x.k+'_notes']+'</span>':'')+'</div>';}).join('')+'</div>':'')+
+  // Header
+  e('fhead').innerHTML='<div class="fhead" style="background:linear-gradient(135deg,'+f.color+'12,'+f.color+'04);border:2px solid '+f.color+'25">'+
+    '<div class="fhtop"><div><div class="fhlabel" style="color:'+f.color+'">'+f.label+'</div>'+
+    '<div class="fhsub">'+kname(S.kitchen)+' · '+S.date+(S.inspector?' · '+S.inspector:'')+
+    (phCount?' · 📷'+phCount:'')+
+    (S.email?' · 📧'+S.email:'')+'</div></div>'+
+    '<div class="fhscore"><div class="fhpct" style="color:'+col+'">'+p+'%</div>'+
+    '<div class="fhpass">'+(p>=60?'✓ עובר':'✗ לא עובר')+'</div></div></div>'+
+    '<div class="prow"><span>'+r.answered+'/'+r.total+' שאלות נענו</span><span style="color:'+col+';font-weight:700">'+p+'%</span></div>'+
+    '<div class="pbar"><div class="pfill" style="width:'+p+'%;background:'+col+'"></div></div>'+
+    (failed.length?'<div class="failbox"><div class="failtitle">❌ ממצאים הדורשים טיפול ('+failed.length+')</div>'+
+    failed.map(function(x){return'<div class="failitem"><b>'+x.t+':</b> '+x.q+(ans[x.k+'_notes']?'<span style="color:#e74c3c"> — '+ans[x.k+'_notes']+'</span>':'')+'</div>';}).join('')+'</div>':'')+
     '</div>';
+  // Sections
   e('fsecs').innerHTML=secs.map(function(s,si){return renderSec(s,si,ans);}).join('');
 }
+
 function renderSec(s,si,ans){
   var qk=s.questions.map(function(_,qi){return si+'_'+qi;});
   var rel=qk.filter(function(k){return ans[k]&&ans[k]!='na';});
@@ -329,139 +821,226 @@ function renderSec(s,si,ans){
   var col=p!=null?color(p):'#ccc';
   var hp=qk.some(function(k){return ans[k+'_photo'];});
   var isColl=S.col[si];
-  return '<div class="sec"><div class="sh'+(isColl?' col':'')+'" onclick="togSec('+si+')">'+
-    '<div class="sl">'+(hp?'<span style="font-size:11px">📷</span>':'')+
-    '<span style="font-weight:700;font-size:14px;color:#2c3e50">'+s.title+'</span></div>'+
-    '<div class="sr"><span style="font-size:11px;color:#7f8c8d">'+rel.length+'/'+s.questions.length+'</span>'+
-    (p!=null?'<span style="border-radius:14px;padding:2px 9px;font-weight:700;font-size:12px;color:#fff;background:'+col+'">'+p+'%</span>':'')+
-    '<span style="color:#bbb;font-size:13px">'+(isColl?'▼':'▲')+'</span></div></div>'+
+  return '<div class="sec"><div class="shead'+(isColl?' col':'')+'" onclick="togSec('+si+')">'+
+    '<div class="sleft">'+(hp?'<span style="font-size:10px">📷</span>':'')+
+    '<span class="stitle">'+s.title+'</span></div>'+
+    '<div class="sright"><span style="font-size:10px;color:#7f8c8d">'+rel.length+'/'+s.questions.length+'</span>'+
+    (p!=null?'<span class="sscore" style="background:'+col+'">'+p+'%</span>':'')+
+    '<span style="color:#bbb;font-size:12px">'+(isColl?'▼':'▲')+'</span></div></div>'+
     '<div'+(isColl?' style="display:none"':'')+'>'
     +s.questions.map(function(q,qi){return renderQ(q,si,qi,ans);}).join('')+
     '</div></div>';
 }
+
 function renderQ(q,si,qi,ans){
   var k=si+'_'+qi,v=ans[k],st=ST.find(function(s){return s.v===v;}),note=ans[k+'_notes']||'',ph=ans[k+'_photo']||'';
   return '<div class="q" style="'+(st?'background:'+st.bg+';border-color:'+st.c+'44':'')+'">'+
-    '<div class="qt">'+q+'</div><div class="qb">'+
-    ST.map(function(s){return'<button class="qbt'+(v===s.v?' on':'')+'" style="'+(v===s.v?'background:'+s.bg+';color:'+s.c+';border-color:'+s.c:'')+ '" onclick="ansQ('+si+','+qi+',\''+s.v+'\')">'+ST_LABELS[s.v]+'</button>';}).join('')+
-    '</div><div class="qr">'+
-    '<input class="qn" placeholder="הערת מבקר..." value="'+note.replace(/"/g,'&quot;')+'" oninput="noteQ('+si+','+qi+',this.value)">'+
-    '<button class="qcb'+(ph?' hp':'')+'" onclick="openCam('+si+','+qi+')" style="font-family:inherit">📷'+(ph?'<span class="cc">✓</span>':'')+' </button>'+
-    '</div>'+(ph?'<div class="qt2"><img src="'+ph+'" onclick="openLB(\''+ph+'\')"></div>':'')+
+    '<div class="qtext">'+q+'</div><div class="qbtns">'+
+    ST.map(function(s){return'<button class="qbtn'+(v===s.v?' on':'')+'" style="'+(v===s.v?'background:'+s.bg+';color:'+s.c+';border-color:'+s.c:'')+'" onclick="ansQ('+si+','+qi+',\''+s.v+'\')">'+s.l+'</button>';}).join('')+
+    '</div><div class="qrow">'+
+    '<input class="qnote" placeholder="הערת מבקר..." value="'+note.replace(/"/g,'&quot;')+'" oninput="noteQ('+si+','+qi+',this.value)">'+
+    '<button class="qcambtn'+(ph?' hp':'')+'" onclick="openCam('+si+','+qi+')" style="font-family:inherit">📷'+(ph?'<span class="camcheck">✓</span>':'')+' </button>'+
+    '</div>'+(ph?'<div class="qthumb"><img src="'+ph+'" onclick="openLB(\''+ph+'\')"></div>':'')+
     '</div>';
 }
+
 function togSec(si){S.col[si]=!S.col[si];renderForm();}
 function ansQ(si,qi,v){var k=si+'_'+qi,cur=sa()[k];setA(k,cur===v?null:v);renderForm();}
 function noteQ(si,qi,val){
   setA(si+'_'+qi+'_notes',val);
-  var r=sc(S.formKey,sa(),S.kitchen),p=r.pct,col=color(p),sp=e('tbs');
+  var r=calcScore(getCurSections(),sa()),p=r.pct,col=color(p),sp=e('tbs');
   if(sp){sp.textContent=p+'%';sp.style.background=col;}
 }
+
 function doSave(){
-  S.reports=[{kitchen:S.kitchen,formKey:S.formKey,date:S.date,time:new Date().toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),inspector:S.inspector,answers:Object.assign({},sa())},...S.reports].slice(0,50);
-  SLS('kqr9',S.reports);
+  var f=getCurForm();
+  S.reports=[{
+    kitchen:S.kitchen,formKey:S.formIdx,formLabel:f?f.label:'',
+    date:S.date,time:new Date().toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),
+    inspector:S.inspector,email:S.email,answers:Object.assign({},sa())
+  },...S.reports].slice(0,80);
+  SLS('kqR10',S.reports);
   var b=e('bsv');b.textContent='✓ נשמר!';b.classList.add('ok');
   setTimeout(function(){b.textContent='💾 שמור';b.classList.remove('ok');},2200);
 }
 function doFinish(){doSave();goHome();}
 
-// PDF - uses download instead of window.open (fixes about:blank on iOS/Safari)
-function makePDFHtml(formKey,ans,kitchen,date,inspector){
-  var f=FORMS[formKey],secs=getFormSections(formKey,kitchen),r=sc(formKey,ans,kitchen),p=r.pct;
-  var sc2=p>=85?'#27ae60':p>=60?'#f39c12':'#c0392b';
-  var icon=FORM_ICONS[formKey]||'';
-  var rows=secs.map(function(s,si){
-    return '<tr><td colspan="4" style="background:#2c3e50;color:#fff;font-weight:700;padding:9px 14px;font-size:13px;text-align:right">'+s.title+'</td></tr>'+
+// ═══════════════════════════════════════════════════════════════════
+// PDF
+// ═══════════════════════════════════════════════════════════════════
+function makePDFHtml(formLabel,sections,ans,kitchen,date,inspector,email){
+  var r=calcScore(sections,ans),p=r.pct,sc2=p>=85?'#27ae60':p>=60?'#f39c12':'#c0392b';
+  var rows=sections.map(function(s,si){
+    return '<tr><td colspan="4" style="background:#2c3e50;color:#fff;font-weight:700;padding:8px 12px;font-size:12px;text-align:right">'+s.title+'</td></tr>'+
     s.questions.map(function(q,qi){
       var k=si+'_'+qi,st=ST.find(function(x){return x.v===ans[k];}),ph=ans[k+'_photo'];
-      var stLabel=st?(ST_LABELS[st.v]||st.l):'—';
-      return '<tr style="border-bottom:1px solid #eee"><td style="padding:8px 12px;direction:rtl;font-size:12px">'+q+'</td>'+
-        '<td style="padding:8px;text-align:center;font-weight:700;color:'+(st?st.c:'#999')+';font-size:12px;white-space:nowrap">'+stLabel+'</td>'+
-        '<td style="padding:8px;direction:rtl;font-size:11px;color:#555">'+(ans[k+'_notes']||'—')+'</td>'+
-        '<td style="padding:8px;text-align:center">'+(ph?'<img src="'+ph+'" style="height:48px;border-radius:6px;object-fit:cover">':'')+'</td></tr>';
+      return '<tr style="border-bottom:1px solid #eee">'+
+        '<td style="padding:7px 11px;direction:rtl;font-size:11px;color:#2c3e50">'+q+'</td>'+
+        '<td style="padding:7px;text-align:center;font-weight:700;color:'+(st?st.c:'#999')+';font-size:11px;white-space:nowrap">'+(st?st.l:'—')+'</td>'+
+        '<td style="padding:7px 9px;direction:rtl;font-size:10px;color:#555">'+(ans[k+'_notes']||'—')+'</td>'+
+        '<td style="padding:7px;text-align:center">'+(ph?'<img src="'+ph+'" style="height:44px;border-radius:5px;object-fit:cover">':'')+'</td></tr>';
     }).join('');
   }).join('');
-  return '<!DOCTYPE html><html dir="rtl" lang="he"><head><meta charset="UTF-8">'+
-    '<title>דוח ביקורת — '+kitchenDisplay(kitchen)+'</title>'+
+  return '<!DOCTYPE html><html dir="rtl" lang="he"><head><meta charset="UTF-8"><title>דוח — '+kname(kitchen)+'</title>'+
     '<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;direction:rtl;background:#f5f7fa}'+
-    '.page{max-width:820px;margin:0 auto;background:#fff;padding:32px 36px 60px}'+
-    'table{width:100%;border-collapse:collapse;margin-top:22px}'+
-    'th{background:#34495e;color:#fff;padding:9px 12px;font-size:12px;font-weight:700}'+
+    '.page{max-width:820px;margin:0 auto;background:#fff;padding:28px 32px 50px}'+
+    'table{width:100%;border-collapse:collapse;margin-top:18px}'+
+    'th{background:#34495e;color:#fff;padding:8px 11px;font-size:11px;font-weight:700}'+
     'tr:nth-child(even){background:#f9fafb}@media print{.np{display:none}}</style></head><body>'+
     '<div class="page">'+
-    '<div style="text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:3px solid #e8ecf0">'+
-    '<div style="font-size:12px;color:#999;margin-bottom:6px">סיכום ביקורת איכות — ניר עציון</div>'+
-    '<h1 style="font-size:22px;font-weight:900">'+icon+' '+f.label+'</h1>'+
-    '<h2 style="font-size:16px;color:#555;margin-top:4px">'+kitchenDisplay(kitchen)+'</h2>'+
-    '<div style="margin-top:12px;font-size:12px;color:#7f8c8d">'+
+    '<div style="text-align:center;margin-bottom:20px;padding-bottom:18px;border-bottom:3px solid #e8ecf0">'+
+    '<div style="font-size:11px;color:#999;margin-bottom:5px">סיכום ביקורת איכות — ניר עציון</div>'+
+    '<h1 style="font-size:20px;font-weight:900">'+formLabel+'</h1>'+
+    '<h2 style="font-size:15px;color:#555;margin-top:3px">'+kname(kitchen)+'</h2>'+
+    '<div style="margin-top:10px;font-size:11px;color:#7f8c8d">'+
     '<b>תאריך:</b> '+date+' | <b>שעה:</b> '+new Date().toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})+
-    (inspector?' | <b>מבקר:</b> '+inspector:'')+'</div>'+
-    '<div style="margin-top:16px;display:inline-block;background:'+sc2+';color:#fff;border-radius:50px;padding:9px 28px;font-size:18px;font-weight:900">'+
+    (inspector?' | <b>מבקר:</b> '+inspector:'')+
+    (email?' | <b>מייל:</b> '+email:'')+
+    '</div><div style="margin-top:13px;display:inline-block;background:'+sc2+';color:#fff;border-radius:50px;padding:8px 24px;font-size:16px;font-weight:900">'+
     'ציון: '+p+'% '+(p>=60?'✓ עובר':'✗ לא עובר')+'</div></div>'+
     '<table><thead><tr>'+
     '<th style="text-align:right;width:42%">שאלה</th>'+
     '<th style="width:18%">ציון / סטטוס</th>'+
     '<th style="text-align:right;width:26%">הערת מבקר</th>'+
-    '<th style="width:14%">תמונה</th></tr></thead><tbody>'+rows+'</tbody></table>'+
-    '<div class="np" style="text-align:center;padding:24px">'+
-    '<button onclick="window.print()" style="padding:12px 28px;background:#2980b9;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;font-family:Arial">'+
-    'הדפס / שמור PDF</button></div></div></body></html>';
+    '<th style="width:14%">תמונה</th>'+
+    '</tr></thead><tbody>'+rows+'</tbody></table>'+
+    '<div class="np" style="text-align:center;padding:20px">'+
+    '<button onclick="window.print()" style="padding:11px 26px;background:#2980b9;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;font-family:Arial">הדפס / שמור PDF</button>'+
+    '</div></div></body></html>';
 }
-function doPDF(){
-  var html=makePDFHtml(S.formKey,sa(),S.kitchen,S.date,S.inspector);
-  downloadHTML(html,'דוח-'+kitchenDisplay(S.kitchen)+'-'+S.date+'.html');
-}
-function downloadHTML(html,filename){
+
+function downloadHTML(html,fname){
   var blob=new Blob([html],{type:'text/html;charset=utf-8'});
   var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
-  a.href=url;a.download=filename;
+  var a=document.createElement('a');a.href=url;a.download=fname;
   document.body.appendChild(a);a.click();
   setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},3000);
 }
 
+function doPDF(){
+  var f=getCurForm(),secs=getCurSections();
+  if(!f)return;
+  var html=makePDFHtml(f.label,secs,sa(),S.kitchen,S.date,S.inspector,S.email);
+  downloadHTML(html,'דוח-'+kname(S.kitchen)+'-'+S.date+'.html');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// EMAIL
+// ═══════════════════════════════════════════════════════════════════
+function doMail(){
+  var f=getCurForm(),secs=getCurSections();
+  if(!f){alert('אין טופס פעיל');return;}
+  var targetEmail=S.email||prompt('הזן כתובת מייל לשליחה:','');
+  if(!targetEmail){return;}
+  var r=calcScore(secs,sa()),p=r.pct;
+  var ans=sa();
+  var failed=[];
+  secs.forEach(function(s,si){s.questions.forEach(function(q,qi){if(ans[si+'_'+qi]==='fail')failed.push(s.title+': '+q+(ans[si+'_'+qi+'_notes']?' — '+ans[si+'_'+qi+'_notes']:''));});});
+  var subject='דוח ביקורת — '+f.label+' — '+kname(S.kitchen)+' — '+S.date;
+  var body='דוח ביקורת איכות\n'+
+    '========================\n'+
+    'מטבח: '+kname(S.kitchen)+'\n'+
+    'ביקורת: '+f.label+'\n'+
+    'תאריך: '+S.date+'\n'+
+    'שעה: '+new Date().toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})+'\n'+
+    'מבקר: '+(S.inspector||'לא צוין')+'\n'+
+    'ציון: '+p+'% '+(p>=60?'(עובר)':'(לא עובר)')+'\n\n';
+  if(failed.length){
+    body+='ממצאים הדורשים טיפול ('+failed.length+'):\n';
+    failed.forEach(function(f,i){body+=(i+1)+'. '+f+'\n';});
+    body+='\n';
+  }else{
+    body+='לא נמצאו ממצאים הדורשים טיפול.\n\n';
+  }
+  body+='* הדוח המלא עם תמונות ניתן לייצוא כ-PDF מהאפליקציה.';
+  var mailLink='mailto:'+encodeURIComponent(targetEmail)+
+    '?subject='+encodeURIComponent(subject)+
+    '&body='+encodeURIComponent(body);
+  window.location.href=mailLink;
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // REPORTS
+// ═══════════════════════════════════════════════════════════════════
 function openReports(){
   var rl=e('rl');
-  if(!S.reports.length){rl.innerHTML='<div style="text-align:center;color:#ccc;padding:40px;font-size:15px">אין ביקורות שמורות עדיין</div>';}
+  if(!S.reports.length){rl.innerHTML='<div style="text-align:center;color:#ccc;padding:36px;font-size:14px">אין ביקורות שמורות עדיין</div>';}
   else{rl.innerHTML=S.reports.map(function(r,i){return rItem(r,i);}).join('');}
   e('rm').style.display='flex';
 }
 function closeReports(){e('rm').style.display='none';}
+
 function rItem(r,i){
-  var f=FORMS[r.formKey],res=sc(r.formKey,r.answers||{},r.kitchen),p=res.pct,col=color(p);
+  // Get sections from saved form
+  var forms=getFormsForKitchen(r.kitchen||'Bento');
+  var fdata=forms[r.formKey]?.data||forms[0]?.data;
+  var secs=fdata?fdata.sections:[];
+  var res=calcScore(secs,r.answers||{}),p=res.pct,col=color(p);
   var ents=Object.entries(r.answers||{});
-  var ok=ents.filter(function(x){return x[1]==='ok'&&x[0].indexOf('_')<0;}).length;
-  var fail=ents.filter(function(x){return x[1]==='fail'&&x[0].indexOf('_')<0;}).length;
+  var ok=ents.filter(function(x){return x[1]==='ok'&&!x[0].includes('_');}).length;
+  var fail=ents.filter(function(x){return x[1]==='fail'&&!x[0].includes('_');}).length;
   var ph=ents.filter(function(x){return x[0].includes('_photo')&&x[1];});
   var bg=p>=85?'#eafaf1':p>=60?'#fef9e7':'#fdedec';
-  var icon=FORM_ICONS[r.formKey]||'';
-  return '<div class="ri"><div class="rh" style="background:'+bg+'" onclick="togRep('+i+')">'+
-    '<div><div style="font-weight:700;font-size:14px;color:#2c3e50">'+kitchenDisplay(r.kitchen||'')+'</div>'+
-    '<div style="color:#7f8c8d;font-size:11px">'+icon+' '+(f?f.label:'')+' · '+r.date+' · '+r.time+(r.inspector?' · '+r.inspector:'')+(ph.length?' <span style="color:#2980b9">📷'+ph.length+'</span>':'')+' </div></div>'+
+  return '<div class="ritem"><div class="rhead" style="background:'+bg+'" onclick="togRep('+i+')">'+
+    '<div><div style="font-weight:700;font-size:13px;color:#2c3e50">'+kname(r.kitchen||'')+'</div>'+
+    '<div style="color:#7f8c8d;font-size:11px">'+(r.formLabel||'')+' · '+r.date+' · '+r.time+(r.inspector?' · '+r.inspector:'')+
+    (ph.length?' <span style="color:#2980b9">📷'+ph.length+'</span>':'')+
+    (r.email?' <span style="color:#8e44ad">📧</span>':'')+
+    '</div></div>'+
     '<div style="display:flex;gap:6px;align-items:center">'+
-    '<span style="color:#27ae60;font-weight:700;font-size:12px">✅'+ok+'</span>'+
-    '<span style="color:#e74c3c;font-weight:700;font-size:12px">❌'+fail+'</span>'+
-    '<span style="border-radius:14px;padding:3px 10px;font-weight:800;font-size:13px;color:#fff;background:'+col+'">'+p+'%</span>'+
+    '<span style="color:#27ae60;font-weight:700;font-size:11px">✅'+ok+'</span>'+
+    '<span style="color:#e74c3c;font-weight:700;font-size:11px">❌'+fail+'</span>'+
+    '<span style="border-radius:13px;padding:2px 9px;font-weight:800;font-size:12px;color:#fff;background:'+col+'">'+p+'%</span>'+
     '<span style="color:#ccc" id="ra'+i+'">▼</span></div></div>'+
-    '<div class="rb" id="rb'+i+'" style="display:none">'+
-    (ph.length?'<div style="font-weight:600;color:#2980b9;font-size:12px;margin-bottom:7px">📷 תמונות</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">'+ph.map(function(x){return'<img src="'+x[1]+'" onclick="openLB(\''+x[1]+'\')" style="height:56px;width:56px;object-fit:cover;border-radius:7px;border:1px solid #ddd;cursor:zoom-in">';}).join('')+'</div>':'')+
-    '<div style="display:flex;gap:9px"><button style="flex:1;padding:10px;border-radius:10px;border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;font-weight:700;font-size:13px;font-family:inherit" onclick="exportR('+i+')">📄 ייצא PDF</button>'+
-    '<button style="padding:10px 14px;border-radius:10px;border:1px solid #e74c3c;background:transparent;color:#e74c3c;font-weight:600;font-size:13px;font-family:inherit" onclick="delR('+i+')">🗑</button></div>'+
+    '<div class="rbody" id="rb'+i+'" style="display:none">'+
+    (ph.length?'<div style="font-weight:600;color:#2980b9;font-size:11px;margin-bottom:6px">📷 תמונות</div>'+
+    '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px">'+ph.map(function(x){return'<img src="'+x[1]+'" onclick="openLB(\''+x[1]+'\')" style="height:52px;width:52px;object-fit:cover;border-radius:6px;border:1px solid #ddd;cursor:zoom-in">';}).join('')+'</div>':'')+
+    '<div style="display:flex;gap:8px">'+
+    '<button style="flex:1;padding:9px;border-radius:9px;border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;font-weight:700;font-size:12px;font-family:inherit" onclick="exportR('+i+')">📄 PDF</button>'+
+    '<button style="flex:1;padding:9px;border-radius:9px;border:none;background:linear-gradient(135deg,#8e44ad,#6c3483);color:#fff;font-weight:700;font-size:12px;font-family:inherit" onclick="mailR('+i+')">📧 מייל</button>'+
+    '<button style="padding:9px 12px;border-radius:9px;border:1px solid #e74c3c;background:transparent;color:#e74c3c;font-weight:600;font-size:12px;font-family:inherit" onclick="delR('+i+')">🗑</button></div>'+
     '</div></div>';
 }
+
 function togRep(i){
   var b=e('rb'+i),a=e('ra'+i),op=b.style.display==='block';
   b.style.display=op?'none':'block';a.textContent=op?'▼':'▲';
 }
-function delR(i){if(!confirm('למחוק ביקורת זו?'))return;S.reports.splice(i,1);SLS('kqr9',S.reports);openReports();}
+function delR(i){if(!confirm('למחוק ביקורת זו?'))return;S.reports.splice(i,1);SLS('kqR10',S.reports);openReports();}
+
 function exportR(i){
   var r=S.reports[i];
-  var html=makePDFHtml(r.formKey,r.answers||{},r.kitchen,r.date,r.inspector);
-  downloadHTML(html,'דוח-'+kitchenDisplay(r.kitchen)+'-'+r.date+'.html');
+  var forms=getFormsForKitchen(r.kitchen||'Bento');
+  var fdata=forms[r.formKey]?.data||forms[0]?.data;
+  if(!fdata)return;
+  var html=makePDFHtml(fdata.label,fdata.sections,r.answers||{},r.kitchen,r.date,r.inspector,r.email);
+  downloadHTML(html,'דוח-'+kname(r.kitchen)+'-'+r.date+'.html');
 }
 
+function mailR(i){
+  var r=S.reports[i];
+  var forms=getFormsForKitchen(r.kitchen||'Bento');
+  var fdata=forms[r.formKey]?.data||forms[0]?.data;
+  if(!fdata)return;
+  var secs=fdata.sections,ans=r.answers||{};
+  var res=calcScore(secs,ans),p=res.pct;
+  var targetEmail=r.email||prompt('הזן כתובת מייל:','');
+  if(!targetEmail)return;
+  var failed=[];
+  secs.forEach(function(s,si){s.questions.forEach(function(q,qi){if(ans[si+'_'+qi]==='fail')failed.push(s.title+': '+q+(ans[si+'_'+qi+'_notes']?' — '+ans[si+'_'+qi+'_notes']:''));});});
+  var subject='דוח ביקורת — '+fdata.label+' — '+kname(r.kitchen)+' — '+r.date;
+  var body='דוח ביקורת איכות\n========================\n'+
+    'מטבח: '+kname(r.kitchen)+'\nביקורת: '+fdata.label+'\nתאריך: '+r.date+'\nשעה: '+r.time+'\n'+
+    'מבקר: '+(r.inspector||'לא צוין')+'\nציון: '+p+'% '+(p>=60?'(עובר)':'(לא עובר)')+'\n\n';
+  if(failed.length){body+='ממצאים הדורשים טיפול ('+failed.length+'):\n';failed.forEach(function(f,i){body+=(i+1)+'. '+f+'\n';});body+='\n';}
+  else{body+='לא נמצאו ממצאים הדורשים טיפול.\n\n';}
+  body+='* הדוח המלא עם תמונות ניתן לייצוא כ-PDF מהאפליקציה.';
+  window.location.href='mailto:'+encodeURIComponent(targetEmail)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // CAMERA
+// ═══════════════════════════════════════════════════════════════════
 var CAM={si:null,qi:null,stream:null,preview:null};
 function openCam(si,qi){
   CAM.si=si;CAM.qi=qi;CAM.stream=null;
@@ -473,17 +1052,19 @@ function renderCam(){
   var pv=e('cpv'),ca=e('ca');
   if(CAM.preview){
     pv.innerHTML='<img src="'+CAM.preview+'" onclick="openLB(\''+CAM.preview+'\')">';
-    ca.innerHTML='<div style="display:flex;gap:9px"><button style="flex:1;padding:12px;border-radius:12px;border:1px solid #e74c3c;background:transparent;color:#e74c3c;font-weight:600;font-size:14px;font-family:inherit" onclick="camRedo()">🔄 חזור</button><button style="flex:2;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:15px;font-family:inherit" onclick="camConfirm()">✅ אשר תמונה</button></div>'+
-    '<button style="background:none;border:none;color:#e74c3c;font-size:12px;text-align:center;padding:4px;font-family:inherit" onclick="camRemove()">🗑 הסר תמונה קיימת</button>';
-  } else if(CAM.stream){
+    ca.innerHTML='<div style="display:flex;gap:8px">'+
+      '<button style="flex:1;padding:11px;border-radius:11px;border:1px solid #e74c3c;background:transparent;color:#e74c3c;font-weight:600;font-size:13px;font-family:inherit" onclick="camRedo()">🔄 חזור</button>'+
+      '<button style="flex:2;padding:11px;border-radius:11px;border:none;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:14px;font-family:inherit" onclick="camConfirm()">✅ אשר תמונה</button></div>'+
+      '<button style="background:none;border:none;color:#e74c3c;font-size:11px;text-align:center;padding:3px;font-family:inherit" onclick="camRemove()">🗑 הסר תמונה קיימת</button>';
+  }else if(CAM.stream){
     pv.innerHTML='<video id="cv" autoplay playsinline muted webkit-playsinline></video>';
     var v=document.getElementById('cv');v.srcObject=CAM.stream;v.play().catch(function(){});
-    ca.innerHTML='<button style="padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;font-weight:800;font-size:16px;font-family:inherit" onclick="camSnap()">⚡ צלם עכשיו</button>'+
-    '<button style="background:none;border:none;color:#666;font-size:12px;text-align:center;font-family:inherit" onclick="camStop()">✕ ביטול מצלמה</button>';
-  } else {
-    pv.innerHTML='<div class="cpp"><span style="font-size:48px">📷</span><span style="color:#90caf9;font-size:13px">לחץ לצילום או בחר מהגלריה</span></div>';
-    ca.innerHTML='<button style="padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;font-weight:700;font-size:15px;font-family:inherit" onclick="camOpen()">'+(isIOS?'📷 צלם תמונה':'📷 פתח מצלמה')+'</button>'+
-    '<button style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);color:#90caf9;font-weight:600;font-size:14px;font-family:inherit" onclick="e(\'cfg\').click()">🖼 בחר מהגלריה</button>';
+    ca.innerHTML='<button style="padding:13px;border-radius:11px;border:none;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;font-weight:800;font-size:15px;font-family:inherit" onclick="camSnap()">⚡ צלם עכשיו</button>'+
+      '<button style="background:none;border:none;color:#666;font-size:11px;text-align:center;font-family:inherit" onclick="camStop()">✕ ביטול מצלמה</button>';
+  }else{
+    pv.innerHTML='<div class="campph"><span style="font-size:44px">📷</span><span style="color:#90caf9;font-size:12px">לחץ לצילום או בחר מהגלריה</span></div>';
+    ca.innerHTML='<button style="padding:13px;border-radius:11px;border:none;background:linear-gradient(135deg,#2980b9,#1a5276);color:#fff;font-weight:700;font-size:14px;font-family:inherit" onclick="camOpen()">'+(isIOS?'📷 צלם תמונה':'📷 פתח מצלמה')+'</button>'+
+      '<button style="padding:12px;border-radius:11px;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);color:#90caf9;font-weight:600;font-size:13px;font-family:inherit" onclick="e(\'cfg\').click()">🖼 בחר מהגלריה</button>';
   }
 }
 async function camOpen(){
@@ -504,8 +1085,7 @@ function camSnap(){
   var v=document.getElementById('cv'),c=e('cc');if(!v||!c)return;
   c.width=v.videoWidth||640;c.height=v.videoHeight||480;
   c.getContext('2d').drawImage(v,0,0);
-  CAM.preview=c.toDataURL('image/jpeg',0.82);
-  camStop();renderCam();
+  CAM.preview=c.toDataURL('image/jpeg',0.82);camStop();renderCam();
 }
 function camStop(){if(CAM.stream){CAM.stream.getTracks().forEach(function(t){t.stop();});CAM.stream=null;}renderCam();}
 function camRedo(){CAM.preview=null;renderCam();}
@@ -514,11 +1094,14 @@ function camRemove(){setA(CAM.si+'_'+CAM.qi+'_photo',null);CAM.preview=null;clos
 e('cfc').onchange=function(ev){var f=ev.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(x){CAM.preview=x.target.result;renderCam();};r.readAsDataURL(f);this.value='';};
 e('cfg').onchange=function(ev){var f=ev.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(x){CAM.preview=x.target.result;renderCam();};r.readAsDataURL(f);this.value='';};
 
+// LIGHTBOX
 function openLB(src){e('lbi').src=src;e('lb').style.display='flex';}
 function closeLB(){e('lb').style.display='none';}
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){closeLB();closeCam();closeReports();}});
 
+// ═══════════════════════════════════════════════════════════════════
 // PWA
+// ═══════════════════════════════════════════════════════════════════
 (function(){
   try{
     var icon="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="40" fill="#0d1b2a"/><text y="130" x="96" font-size="110" text-anchor="middle">🍽️</text></svg>');
@@ -534,7 +1117,7 @@ document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){closeLB()
   function showAB(ev){
     if(document.getElementById('ib'))return;
     var b=document.createElement('div');b.id='ib';b.className='ibanner';
-    b.innerHTML='<div style="display:flex;align-items:center;gap:14px"><div style="font-size:34px">📲</div><div style="flex:1"><div style="color:#fff;font-weight:800;font-size:15px;margin-bottom:3px">התקן כאפליקציה!</div><div style="color:#90caf9;font-size:12px">גישה מהירה ועבודה ללא אינטרנט</div></div><div style="display:flex;flex-direction:column;gap:6px"><button id="bpi" style="padding:9px 16px;border-radius:10px;border:none;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:13px;font-family:inherit">התקן</button><button id="bpd" style="background:none;border:none;color:#666;font-size:11px;font-family:inherit;cursor:pointer">לא עכשיו</button></div></div>';
+    b.innerHTML='<div style="display:flex;align-items:center;gap:12px"><div style="font-size:30px">📲</div><div style="flex:1"><div style="color:#fff;font-weight:800;font-size:14px;margin-bottom:2px">התקן כאפליקציה!</div><div style="color:#90caf9;font-size:11px">גישה מהירה ועבודה ללא אינטרנט</div></div><div style="display:flex;flex-direction:column;gap:5px"><button id="bpi" style="padding:8px 13px;border-radius:9px;border:none;background:linear-gradient(135deg,#27ae60,#1e8449);color:#fff;font-weight:800;font-size:12px;font-family:inherit">התקן</button><button id="bpd" style="background:none;border:none;color:#666;font-size:10px;font-family:inherit;cursor:pointer">לא עכשיו</button></div></div>';
     document.body.appendChild(b);
     document.getElementById('bpi').onclick=function(){ev.prompt();ev.userChoice.then(function(r){if(r.outcome==='accepted')localStorage.setItem('pwa_ok','1');b.remove();});};
     document.getElementById('bpd').onclick=function(){b.remove();localStorage.setItem('pwa_ok','1');};
@@ -543,13 +1126,14 @@ document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){closeLB()
     setTimeout(function(){
       if(document.getElementById('ib'))return;
       var b=document.createElement('div');b.id='ib';b.className='ibanner';
-      b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:30px">📲</div><div><div style="color:#fff;font-weight:800;font-size:14px">הוסף למסך הבית</div><div style="color:#90caf9;font-size:12px">עבוד גם ללא אינטרנט!</div></div></div><button id="ibc" style="background:rgba(255,255,255,0.1);border:none;color:#aaa;border-radius:8px;padding:5px 9px;font-size:13px;font-family:inherit">✕</button></div><div style="background:rgba(144,202,249,0.08);border-radius:10px;padding:10px 13px;border:1px solid rgba(144,202,249,0.15)"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="background:rgba(255,255,255,0.1);border-radius:6px;padding:3px 7px;font-size:16px">□↑</span><span style="color:#e0e0e0;font-size:13px">לחץ שתף בתחתית Safari</span></div><div style="display:flex;align-items:center;gap:10px"><span style="background:rgba(255,255,255,0.1);border-radius:6px;padding:3px 7px;font-size:16px">+</span><span style="color:#e0e0e0;font-size:13px">בחר "הוסף למסך הבית"</span></div></div>';
+      b.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px"><div style="display:flex;align-items:center;gap:9px"><div style="font-size:28px">📲</div><div><div style="color:#fff;font-weight:800;font-size:13px">הוסף למסך הבית</div><div style="color:#90caf9;font-size:11px">עבוד גם ללא אינטרנט!</div></div></div><button id="ibc" style="background:rgba(255,255,255,0.1);border:none;color:#aaa;border-radius:7px;padding:4px 8px;font-size:12px;font-family:inherit">✕</button></div><div style="background:rgba(144,202,249,0.08);border-radius:9px;padding:9px 12px;border:1px solid rgba(144,202,249,0.15)"><div style="display:flex;align-items:center;gap:9px;margin-bottom:7px"><span style="background:rgba(255,255,255,0.1);border-radius:5px;padding:2px 6px;font-size:14px">□↑</span><span style="color:#e0e0e0;font-size:12px">לחץ שתף בתחתית Safari</span></div><div style="display:flex;align-items:center;gap:9px"><span style="background:rgba(255,255,255,0.1);border-radius:5px;padding:2px 6px;font-size:14px">+</span><span style="color:#e0e0e0;font-size:12px">בחר "הוסף למסך הבית"</span></div></div>';
       document.body.appendChild(b);
       document.getElementById('ibc').onclick=function(){b.remove();localStorage.setItem('pwa_ok','1');};
     },2500);
   }
 })();
 
+// BOOT
 initHome();
 </script>
 </body>
