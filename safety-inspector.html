@@ -588,9 +588,8 @@ function doMail(){
   window.location.href=`mailto:${to}?subject=${subj}&body=${bodyEnc}`;
 }
 
-// ====== PDF ======
-function doPDF(){
-  doSave();
+// ====== BUILD REPORT HTML (shared by PDF + mail) ======
+function buildReportHTML(){
   const score=calcScore();
   const {ok,partial,fail,na}=getCounts();
   const issues=QUESTIONS.filter(q=>S.answers[q.id]&&(S.answers[q.id].status==='fail'||S.answers[q.id].status==='partial'));
@@ -601,91 +600,224 @@ function doPDF(){
   let allRows='';
   QUESTIONS.forEach(q=>{
     const a=S.answers[q.id]||{};
-    const st=a.status==='ok'?'✅ תקין':a.status==='partial'?'⚠️ חלקי':a.status==='fail'?'❌ לא תקין':a.status==='na'?'N/A':'טרם נבדק';
+    const st=a.status==='ok'?'תקין':a.status==='partial'?'חלקי':a.status==='fail'?'לא תקין':a.status==='na'?'N/A':'טרם נבדק';
     const stCl=a.status==='ok'?'#2e7d32':a.status==='partial'?'#e65100':a.status==='fail'?'#c62828':a.status==='na'?'#6a1b9a':'#9e9e9e';
     const stBg=a.status==='ok'?'#e8f5e9':a.status==='partial'?'#fff8e1':a.status==='fail'?'#ffebee':a.status==='na'?'#f3e5f5':'#fafafa';
     const note=a.note||'';
     let photoHtml='';
-    if(a.photo) photoHtml=`<br><img src="${a.photo}" style="max-width:100px;max-height:100px;border-radius:4px;margin-top:4px">`;
+    if(a.photo) photoHtml=`<br><img src="${a.photo}" style="max-width:120px;max-height:120px;border-radius:4px;margin-top:4px;border:1px solid #ddd">`;
     allRows+=`<tr>
-      <td style="text-align:center;font-weight:700;color:#1a237e">${q.id}</td>
-      <td style="color:#555;font-size:.78rem">${q.domain}</td>
-      <td style="font-size:.82rem;line-height:1.4">${q.text}</td>
-      <td style="text-align:center"><span style="background:${stBg};color:${stCl};padding:3px 8px;border-radius:5px;font-size:.78rem;font-weight:700;white-space:nowrap">${st}</span></td>
-      <td style="font-size:.78rem;color:#555">${note}${photoHtml}</td>
+      <td style="text-align:center;font-weight:700;color:#1a237e;width:30px">${q.id}</td>
+      <td style="color:#555;font-size:11px;width:80px">${q.domain}</td>
+      <td style="font-size:12px;line-height:1.5">${q.text}</td>
+      <td style="text-align:center;width:75px"><span style="background:${stBg};color:${stCl};padding:3px 7px;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap;display:inline-block">${st}</span></td>
+      <td style="font-size:11px;color:#444;width:130px">${note}${photoHtml}</td>
     </tr>`;
   });
 
-  let issueRows='';
+  let issueBlock='';
   if(issues.length){
-    issueRows=`<div style="margin-top:18px;background:#fff3f3;border:1.5px solid #ffcdd2;border-radius:10px;padding:14px">
-      <h3 style="color:#c62828;margin-bottom:10px;font-size:.9rem">⚠️ ממצאים הדורשים טיפול (${issues.length})</h3>
+    issueBlock=`<div style="margin-top:16px;background:#fff3f3;border:1.5px solid #ffcdd2;border-radius:8px;padding:12px;page-break-inside:avoid">
+      <div style="color:#c62828;font-weight:700;font-size:13px;margin-bottom:8px">⚠ ממצאים הדורשים טיפול (${issues.length})</div>
       ${issues.map(q=>{
         const a=S.answers[q.id];
-        const st=a.status==='fail'?'❌ לא תקין':'⚠️ חלקי';
-        const note=a.note?` – ${a.note}`:'';
-        return `<div style="padding:6px 0;border-bottom:1px solid #ffebee;font-size:.82rem"><strong>[${q.id}] ${q.domain}:</strong> ${q.text} | ${st}${note}</div>`;
+        const st=a.status==='fail'?'לא תקין':'חלקי';
+        const note=a.note?` | ${a.note}`:'';
+        return `<div style="padding:5px 0;border-bottom:1px solid #ffebee;font-size:12px"><strong>[${q.id}] ${q.domain}:</strong> ${q.text} — <span style="color:${a.status==='fail'?'#c62828':'#e65100'}">${st}</span>${note}</div>`;
       }).join('')}
     </div>`;
   }
 
+  return {score,ok,partial,fail,na,dateStr,scoreCls,scoreBg,allRows,issueBlock,issues};
+}
+
+// ====== PDF (print dialog → Save as PDF) ======
+function doPDF(){
+  doSave();
+  const {score,ok,partial,fail,na,dateStr,scoreCls,scoreBg,allRows,issueBlock}=buildReportHTML();
+
   const html=`<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8">
-  <title>ביקורת בטיחות – ${S.site} – ${dateStr}</title>
-  <style>
-    body{font-family:Arial,sans-serif;font-size:13px;color:#222;margin:24px;line-height:1.5;direction:rtl}
-    h1{color:#1a237e;font-size:1.2rem;margin:0 0 4px}
-    .hdr{background:linear-gradient(135deg,#1a237e,#3949ab);color:#fff;padding:16px 20px;border-radius:10px;margin-bottom:18px}
-    .hdr .meta{font-size:.8rem;opacity:.85;margin-top:4px}
-    .score-box{display:inline-block;background:${scoreBg};color:${scoreCls};font-size:1.6rem;font-weight:800;padding:10px 22px;border-radius:8px;margin:10px 6px 0 0;vertical-align:middle}
-    .stat-box{display:inline-block;padding:8px 14px;border-radius:8px;font-size:.82rem;font-weight:600;margin:4px;vertical-align:middle}
-    table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.82rem}
-    th{background:#1a237e;color:#fff;padding:8px 10px;text-align:right;font-weight:600}
-    td{padding:7px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top}
-    tr:nth-child(even) td{background:#fafafa}
-    .footer{margin-top:20px;padding:12px;background:#fff3e0;border-radius:8px;font-size:.78rem;color:#e65100;border-right:4px solid #ff9800}
-    @media print{body{margin:10px}.hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-  </style></head><body>
-  <div class="hdr">
-    <h1>🛡️ צ׳קליסט בטיחות שבועי – מטבחי Intel חיפה</h1>
-    <div class="meta">אתר: ${S.site} &nbsp;|&nbsp; מבצע הביקורת: ${S.inspector} &nbsp;|&nbsp; תאריך: ${dateStr} &nbsp;|&nbsp; שעה: ${S.time}</div>
+<title>ביקורת בטיחות – ${S.site} – ${dateStr}</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,'David',sans-serif;font-size:13px;color:#1a1a1a;direction:rtl;background:#fff}
+  .page{max-width:780px;margin:0 auto;padding:18px 22px}
+  .report-hdr{background:#1a237e;color:#fff;padding:14px 18px;border-radius:8px;margin-bottom:14px}
+  .report-hdr h1{font-size:15px;margin-bottom:5px}
+  .report-hdr .meta{font-size:11px;opacity:.88;line-height:1.6}
+  .scores{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+  .big-sc{background:${scoreBg};color:${scoreCls};font-size:28px;font-weight:800;padding:8px 18px;border-radius:7px}
+  .st-chip{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  thead th{background:#1a237e;color:#fff;padding:7px 8px;text-align:right;font-size:11px}
+  tbody td{padding:6px 8px;border-bottom:1px solid #eee;vertical-align:top}
+  tbody tr:nth-child(even) td{background:#f8f9ff}
+  .footer-note{margin-top:14px;padding:10px 12px;background:#fff3e0;border-right:4px solid #ff9800;font-size:11px;color:#b35900;border-radius:4px}
+  .print-ts{margin-top:10px;font-size:10px;color:#aaa;text-align:center}
+  @media print{
+    @page{size:A4;margin:12mm 10mm}
+    body{font-size:11px}
+    .report-hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .st-chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .big-sc{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    tbody tr:nth-child(even) td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style></head><body>
+<div class="page">
+  <div class="report-hdr">
+    <h1>צ׳קליסט בטיחות שבועי – מטבחי Intel חיפה</h1>
+    <div class="meta">
+      אתר / בניין: <strong>${S.site}</strong> &nbsp;|&nbsp;
+      מבצע הביקורת: <strong>${S.inspector}</strong> &nbsp;|&nbsp;
+      תאריך: <strong>${dateStr}</strong> &nbsp;|&nbsp;
+      שעה: <strong>${S.time}</strong>
+    </div>
   </div>
 
-  <div>
-    <span class="score-box">${score}%</span>
-    <span class="stat-box" style="background:#e8f5e9;color:#2e7d32">✅ תקין: ${ok}</span>
-    <span class="stat-box" style="background:#fff8e1;color:#e65100">⚠️ חלקי: ${partial}</span>
-    <span class="stat-box" style="background:#ffebee;color:#c62828">❌ לא תקין: ${fail}</span>
-    <span class="stat-box" style="background:#f3e5f5;color:#6a1b9a">N/A: ${na}</span>
+  <div class="scores">
+    <span class="big-sc">${score}%</span>
+    <span class="st-chip" style="background:#e8f5e9;color:#2e7d32">✓ תקין: ${ok}</span>
+    <span class="st-chip" style="background:#fff8e1;color:#e65100">~ חלקי: ${partial}</span>
+    <span class="st-chip" style="background:#ffebee;color:#c62828">✗ לא תקין: ${fail}</span>
+    <span class="st-chip" style="background:#f3e5f5;color:#6a1b9a">N/A: ${na}</span>
   </div>
 
-  ${issueRows}
+  ${issueBlock}
 
-  <table>
+  <table style="margin-top:14px">
     <thead><tr>
-      <th style="width:35px">#</th>
-      <th style="width:90px">תחום</th>
+      <th style="width:28px">#</th>
+      <th style="width:78px">תחום</th>
       <th>נקודת בדיקה</th>
-      <th style="width:90px;text-align:center">סטטוס</th>
-      <th style="width:140px">הערות</th>
+      <th style="width:72px;text-align:center">סטטוס</th>
+      <th style="width:125px">הערות / פעולה</th>
     </tr></thead>
     <tbody>${allRows}</tbody>
   </table>
 
-  <div class="footer">⚠️ מפגע מהותי או סיכון מיידי: יש להפסיק שימוש/לבודד לפי הצורך ולדווח מיד לגורם האחראי.</div>
-  <div style="margin-top:12px;font-size:.72rem;color:#aaa;text-align:center">נוצר בתאריך ${new Date().toLocaleString('he-IL')} | אפליקציית ביקורת בטיחות Intel חיפה</div>
-  </body></html>`;
+  <div class="footer-note">⚠ מפגע מהותי או סיכון מיידי: יש להפסיק שימוש / לבודד לפי הצורך ולדווח מיד לגורם האחראי.</div>
+  <div class="print-ts">הופק: ${new Date().toLocaleString('he-IL')} | אפליקציית ביקורת בטיחות – Intel חיפה</div>
+</div>
+<script>window.onload=function(){window.print();}<\/script>
+</body></html>`;
 
   const blob=new Blob([html],{type:'text/html;charset=utf-8'});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download=`ביקורת-בטיחות-${S.site||'Intel'}-${dateStr}.html`.replace(/\s/g,'-');
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(()=>URL.revokeObjectURL(url),3000);
-  toast('📄 הדוח הורד!');
+  const win=window.open(url,'_blank');
+  if(!win){
+    // fallback for iOS/blocked popup: download as HTML and instruct
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=`ביקורת-בטיחות-${(S.site||'Intel').replace(/\s/g,'-')}-${dateStr}.html`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    toast('📄 פתח את הקובץ ← הדפס ← שמור PDF');
+  } else {
+    toast('📄 בחר "שמור כ-PDF" בחלון ההדפסה');
+  }
+  setTimeout(()=>URL.revokeObjectURL(url),8000);
   showSummary();
+}
+
+// ====== MAIL ======
+function doMail(){
+  doSave();
+  const {score,ok,partial,fail,na,dateStr,issues}=buildReportHTML();
+
+  // Open PDF first so user can save it and attach
+  doPDFForMail();
+
+  // Open mail client after short delay
+  setTimeout(()=>{
+    let body=`שלום,\n\nמצורף דוח ביקורת בטיחות שבועי – מטבחי Intel חיפה.\n`;
+    body+=`(אנא צרף את קובץ ה-PDF שנפתח/הורד)\n\n`;
+    body+=`─────────────────────────\n`;
+    body+=`תאריך: ${dateStr}\n`;
+    body+=`אתר / בניין: ${S.site}\n`;
+    body+=`מבצע הביקורת: ${S.inspector}\n`;
+    body+=`שעת סיור: ${S.time}\n`;
+    body+=`─────────────────────────\n`;
+    body+=`ציון כולל: ${score}%\n`;
+    body+=`תקין: ${ok} | חלקי: ${partial} | לא תקין: ${fail} | N/A: ${na}\n\n`;
+    if(issues&&issues.length){
+      body+=`ממצאים הדורשים טיפול (${issues.length}):\n`;
+      issues.forEach(q=>{
+        const a=S.answers[q.id];
+        const st=a.status==='fail'?'לא תקין':'חלקי';
+        body+=`[${q.id}] ${q.domain}: ${st}`;
+        if(a.note) body+=` – ${a.note}`;
+        body+='\n';
+      });
+      body+='\n';
+    } else { body+='לא נמצאו ממצאים הדורשים טיפול.\n\n'; }
+    body+='⚠ מפגע מהותי: יש להפסיק שימוש ולדווח לגורם האחראי.\n';
+    body+=`\n---\nנשלח מאפליקציית ביקורת בטיחות Intel חיפה`;
+    const subj=encodeURIComponent(`ביקורת בטיחות – ${S.site} – ${dateStr}`);
+    const to=S.email?encodeURIComponent(S.email):'';
+    window.location.href=`mailto:${to}?subject=${subj}&body=${encodeURIComponent(body)}`;
+  }, 1200);
+}
+
+// PDF helper used by mail flow (no showSummary)
+function doPDFForMail(){
+  const {score,ok,partial,fail,na,dateStr,scoreCls,scoreBg,allRows,issueBlock}=buildReportHTML();
+  const html=`<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8">
+<title>ביקורת בטיחות – ${S.site} – ${dateStr}</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,'David',sans-serif;font-size:13px;color:#1a1a1a;direction:rtl;background:#fff}
+  .page{max-width:780px;margin:0 auto;padding:18px 22px}
+  .report-hdr{background:#1a237e;color:#fff;padding:14px 18px;border-radius:8px;margin-bottom:14px}
+  .report-hdr h1{font-size:15px;margin-bottom:5px}
+  .report-hdr .meta{font-size:11px;opacity:.88;line-height:1.6}
+  .scores{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+  .big-sc{background:${scoreBg};color:${scoreCls};font-size:28px;font-weight:800;padding:8px 18px;border-radius:7px}
+  .st-chip{padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  thead th{background:#1a237e;color:#fff;padding:7px 8px;text-align:right;font-size:11px}
+  tbody td{padding:6px 8px;border-bottom:1px solid #eee;vertical-align:top}
+  tbody tr:nth-child(even) td{background:#f8f9ff}
+  .footer-note{margin-top:14px;padding:10px 12px;background:#fff3e0;border-right:4px solid #ff9800;font-size:11px;color:#b35900;border-radius:4px}
+  @media print{
+    @page{size:A4;margin:12mm 10mm}
+    .report-hdr,.st-chip,.big-sc,tbody tr:nth-child(even) td,thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style></head><body>
+<div class="page">
+  <div class="report-hdr">
+    <h1>צ׳קליסט בטיחות שבועי – מטבחי Intel חיפה</h1>
+    <div class="meta">אתר: <strong>${S.site}</strong> | מבצע: <strong>${S.inspector}</strong> | תאריך: <strong>${dateStr}</strong> | שעה: <strong>${S.time}</strong></div>
+  </div>
+  <div class="scores">
+    <span class="big-sc">${score}%</span>
+    <span class="st-chip" style="background:#e8f5e9;color:#2e7d32">תקין: ${ok}</span>
+    <span class="st-chip" style="background:#fff8e1;color:#e65100">חלקי: ${partial}</span>
+    <span class="st-chip" style="background:#ffebee;color:#c62828">לא תקין: ${fail}</span>
+    <span class="st-chip" style="background:#f3e5f5;color:#6a1b9a">N/A: ${na}</span>
+  </div>
+  ${issueBlock}
+  <table style="margin-top:14px">
+    <thead><tr>
+      <th style="width:28px">#</th><th style="width:78px">תחום</th><th>נקודת בדיקה</th>
+      <th style="width:72px;text-align:center">סטטוס</th><th style="width:125px">הערות</th>
+    </tr></thead>
+    <tbody>${allRows}</tbody>
+  </table>
+  <div class="footer-note">⚠ מפגע מהותי: יש להפסיק שימוש / לבודד ולדווח מיד לגורם האחראי.</div>
+  <div style="margin-top:8px;font-size:10px;color:#aaa;text-align:center">הופק: ${new Date().toLocaleString('he-IL')}</div>
+</div>
+<script>window.onload=function(){window.print();}<\/script>
+</body></html>`;
+  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const win=window.open(url,'_blank');
+  if(!win){
+    const a=document.createElement('a');
+    a.href=url; a.download=`ביקורת-${(S.site||'Intel').replace(/\s/g,'-')}-${dateStr}.html`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    toast('📄 שמור כ-PDF ואז צרף למייל');
+  }
+  setTimeout(()=>URL.revokeObjectURL(url),8000);
 }
 
 // ====== CAMERA ======
